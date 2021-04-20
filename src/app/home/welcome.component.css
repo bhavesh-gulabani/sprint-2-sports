@@ -1,0 +1,8 @@
+.carousel-item {
+    height: 30rem;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    height: 20em;
+    top: 5em;
+}
