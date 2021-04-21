@@ -18,9 +18,20 @@
           </a>
       </div>
 
-      <div class="col-2">
-          <button id="login-button">Login</button>
-      </div>
+      <div class="col-2" *ngIf="!isLoggedIn">
+        <button id="login-button" [routerLink]="['/login']">Login</button>
+    </div>
+
+    <div class="col-2" *ngIf="isLoggedIn" (click)="toggleOptions()" >
+        <img [src]="imageUrl" class="user-image">
+    </div>
+
+       <!-- Hover options -->
+    <div class="container hover-container hide">
+        <div class="row hover-row"><a (click)="toggleOptions()" class="hover-option">Your account</a></div>
+        <div class="row hover-row"><a (click)="toggleOptions()" class="hover-option">Your orders</a></div>
+        <div class="row hover-row"><a (click)="logout()" class="hover-option">Logout</a></div>
+    </div>
 
   </div> 
 

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { AuthInterceptor } from './service/auth-interceptor.service';
+import { CustomerModule } from './customer/customer.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { AuthInterceptor } from './service/auth-interceptor.service';
   ],
   imports: [
     BrowserModule,
+    CustomerModule,
     AppRoutingModule,
     HttpClientModule,
   ],

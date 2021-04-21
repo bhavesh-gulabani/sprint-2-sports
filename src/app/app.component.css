@@ -71,3 +71,44 @@
 #bottom-nav {
     height: 2rem;
 }
+
+.user-image {
+    width: 50px;
+    height: 47px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+/* Hover styles*/
+.hover-container {
+    margin-right: 1.5em;
+    z-index: 1;
+    width: 10em;
+    background-color: #FFFFFF;
+    font-size: 1.2em;
+    border: 1px solid #FFFFFF;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 3.5em;
+}
+
+.hover-row {
+    justify-content: center;
+    padding: 0.3em 0em;
+    cursor: pointer;
+}
+
+.hover-row:hover {
+    background-color: #DCDCDC;
+}
+
+.hide {
+    display: none
+}
+
+.hover-option {
+    text-decoration: none;
+    color: #000000;
+}

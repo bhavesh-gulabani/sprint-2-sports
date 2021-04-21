@@ -20,4 +20,5 @@ export interface Customer {
     imageUrl: string;
     address: Address;
     orders: Set<Order>;
+    status: string;
 }

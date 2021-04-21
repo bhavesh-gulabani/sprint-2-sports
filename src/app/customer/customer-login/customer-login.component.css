@@ -1,0 +1,53 @@
+.row {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.main {
+    height: 35rem;
+}
+
+.col-6 {
+    border-right: 1px solid grey;
+    display: flex;
+    justify-content: center;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 40px;
+    margin-left: 3.4rem;
+    margin-top: 2rem;
+}    
+
+/* Registration section */
+#register {
+    width: 29rem;
+    height: 19rem;
+    top: 4rem;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #B4B4B4;
+}
+
+#register-text {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.3rem;
+    color: #737171;
+    margin-left: 2rem;
+}
+
+#register-button {
+    width: 14rem;
+    height: 2.7rem;
+    border-color: #00D1FF;
+    background: #00D1FF;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
