@@ -1,4 +1,4 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, Validator, ValidatorFn } from '@angular/forms';
 
 export class NumberValidators {
 
@@ -6,6 +6,15 @@ export class NumberValidators {
     return (c: AbstractControl): { [key: string]: boolean } | null => {
       if (c.value && (isNaN(c.value) || c.value.length != 10)) {
         return { phone: true };
+      }
+      return null;
+    };
+  }
+
+  static pincode(): ValidatorFn {
+    return (c: AbstractControl): { [key: string]: boolean } | null => {
+      if (c.value && isNaN(c.value)) {
+        return { pincode: true };
       }
       return null;
     };

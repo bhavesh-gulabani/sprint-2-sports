@@ -55,3 +55,8 @@ input[type=text], [type=date], [type=file] {
     margin: 0;
     padding: 0;
 }
+
+
+.invalid-feedback {
+    margin-top: 0.5em;
+}

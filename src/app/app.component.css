@@ -92,6 +92,7 @@
     top: 0;
     right: 0;
     margin-top: 3.5em;
+    border: 1px solid black;
 }
 
 .hover-row {
@@ -111,4 +112,11 @@
 .hover-option {
     text-decoration: none;
     color: #000000;
+}
+
+
+#admin-title {
+    color: #FFFFFF;
+    font-size: 2em;
+    margin: 0;
 }

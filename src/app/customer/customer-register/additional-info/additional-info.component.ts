@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
+import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { fromEvent, merge, Observable } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { Order } from 'src/app/order/Order';
 import { CustomerService } from 'src/app/service/customer.service';
+import { GenericValidator } from 'src/app/shared/generic-validator';
+import { NumberValidators } from 'src/app/shared/number.validator';
 import { Customer } from '../../customer';
 
 
@@ -12,11 +16,16 @@ import { Customer } from '../../customer';
   styleUrls: ['./additional-info.component.css']
 })
 export class AdditionalInfoComponent implements OnInit {
+  @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   errorMessage: string;
 
   additionalInfoForm: FormGroup;
   customer: Customer;
+  
+  displayMessage: { [key: string]: string } = {};
+  private validationMessages: { [key: string]: { [key: string]: string } };
+  genericValidator: GenericValidator;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private router: Router) { }
 
@@ -28,11 +37,21 @@ export class AdditionalInfoComponent implements OnInit {
       area: [''],
       city: [''],
       state: [''],
-      pincode: [''],
-      imageUrl: ['']
+      pincode: ['', NumberValidators.pincode()],
     });
 
     this.initializeCustomer();
+
+    // Defines all of the validation messages for the form.
+    this.validationMessages = {
+      pincode: {
+        pincode: `The pincode must a valid number.`
+      }
+    }
+
+    // Define an instance of the validator for use with this form,
+    // passing in this form's set of validation messages.
+    this.genericValidator = new GenericValidator(this.validationMessages);
 
   }
 
@@ -42,6 +61,9 @@ export class AdditionalInfoComponent implements OnInit {
     this.customer = {...this.customer, ...this.additionalInfoForm.value};
     this.customer.address = {...this.additionalInfoForm.value}
 
+    this.customer.role = 'Customer';
+
+    // Initially customer status is valid
     this.customer.status = 'Valid';
     
     // Hardcoding the default image url for now
@@ -60,9 +82,25 @@ export class AdditionalInfoComponent implements OnInit {
       error: err => this.errorMessage = err
     });
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['customers/login']);
   }
 
+
+  ngAfterViewInit(): void {
+    // Watch for the blur event from any input element on the form.
+    // This is required because the valueChanges does not provide notification on blur
+    const controlBlurs: Observable<any>[] = this.formInputElements
+      .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+
+    // Merge the blur event observable with the valueChanges observable
+    // so we only need to subscribe once.
+    merge(this.additionalInfoForm.valueChanges, ...controlBlurs).pipe(
+      debounceTime(500)
+    ).subscribe(value => {
+      this.displayMessage = this.genericValidator.processMessages(this.additionalInfoForm);
+    });
+  }
+  
   initializeCustomer(): void {
     this.customer = {
       id: 0,
@@ -82,7 +120,8 @@ export class AdditionalInfoComponent implements OnInit {
         pincode: null
       },
       orders: null,
-      status: null
+      status: null,
+      cart: null
     } 
   }
 }

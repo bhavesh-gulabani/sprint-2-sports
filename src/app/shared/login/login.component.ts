@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService ,private router: Router) { }
+  constructor(private authService: AuthService ,private router: Router, private route: ActivatedRoute) { }
 
   signIn(loginForm: NgForm) {
 
@@ -22,7 +22,23 @@ export class LoginComponent implements OnInit {
         next: token => {
           console.log(token);
           alert('Successfully logged in');
-          this.router.navigate(['/welcome']);      
+
+          
+          // Check for role and navigate accordingly
+          this.route.queryParams.subscribe(params => {
+            if(params['role'] === 'admin') {
+              // Navigate to admin home page
+              this.router.navigate(['/admin/dashboard'], 
+              {
+                queryParams: { role: 'admin'}
+              });      
+            } else {
+              // Navigate to customer home page
+              this.router.navigate(['/welcome']); 
+              
+            }
+            
+          });
         },
         error: err => {
           alert('Invalid credentials');

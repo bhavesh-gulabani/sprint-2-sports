@@ -1,0 +1,41 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 75em;
+    margin-top: 1.5em;
+    border: 1.5px solid black;
+}
+
+#person-img {
+    width: 7em;
+    float: right;
+    margin: 3em;
+}
+
+.col-5 {
+    margin: 2em 2em;
+    font-size: 1.2em;
+}
+
+.content-left {
+    padding-left: 3em;
+}
+
+.back {
+    margin-top: 1em;
+}
+
+button {
+    width: 5em;
+    height: 2.5em;
+    border-color: #00D1FF;
+    background: #00D1FF;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: Roboto;
+}

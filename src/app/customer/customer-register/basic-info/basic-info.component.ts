@@ -80,13 +80,12 @@ export class BasicInfoComponent implements OnInit {
 
   populateCustomer(): void {
     this.customer = {...this.registerForm.value};
-    this.customer.role = 'customer';
     console.log(this.customer);
   }
 
   save() {
     this.populateCustomer();
-    this.router.navigate(['/register/additional-info'], {state: {data: this.customer}});
+    this.router.navigate(['/customers/register/additional-info'], {state: {data: this.customer}});
   }
 
 }

@@ -81,8 +81,14 @@
                             id="pincodeId"
                             type="text"
                             placeholder="Pincode"
-                            formControlName="pincode" />
+                            formControlName="pincode"
+                            [ngClass]= "{'is-invalid': displayMessage.pincode}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.pincode}}
+                            </span>
+
                     </div>
+                    
                 </div>
             </div>
         </div>

@@ -1,3 +1,4 @@
+import { Cart } from "../cart/cart";
 import { Order } from "../order/Order";
 
 export interface Address { 
@@ -21,4 +22,5 @@ export interface Customer {
     address: Address;
     orders: Set<Order>;
     status: string;
+    cart: Cart;
 }

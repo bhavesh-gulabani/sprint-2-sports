@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { AuthInterceptor } from './service/auth-interceptor.service';
 import { CustomerModule } from './customer/customer.module';
+import { AdminModule } from './admin/admin.module';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { CustomerModule } from './customer/customer.module';
   imports: [
     BrowserModule,
     CustomerModule,
+    AdminModule,
+    CartModule,
     AppRoutingModule,
     HttpClientModule,
   ],

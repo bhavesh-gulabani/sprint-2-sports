@@ -1,0 +1,62 @@
+.row, .card-group, .col-4 {
+    margin: 0;
+    padding: 0;
+}
+
+.col-3 {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0em;
+}
+
+.card {
+    width: 18em;
+    height: 20em;
+    cursor: pointer;
+    border: 1.5px solid black;
+}
+
+.card:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+.card-body {
+    padding-left: 3.1em;
+    font-size: 1.1em;
+}
+
+
+.img-container {
+    height: 7em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.person-img {
+    width: 4.5em;
+    border-radius: 40%;
+}
+
+.back {
+    display: flex;
+    margin-left: 3em;
+}
+
+button {
+    width: 5em;
+    height: 2.5em;
+    border-color: #00D1FF;
+    background: #00D1FF;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: Roboto;
+}
+
+.title {
+    margin: auto;
+    margin-left: 16.5em;
+    font-size: 2em;
+}

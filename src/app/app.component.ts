@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from './customer/customer';
 import { AuthService } from './service/auth.service';
 import { CustomerService } from './service/customer.service';
@@ -15,14 +15,26 @@ export class AppComponent implements OnInit {
   errorMessage: string;
   imageUrl: string;
   customerLoggedIn: Customer;
+  userRole: string;
 
-  constructor(private authService: AuthService, private customerService: CustomerService, private router: Router) { }
+  constructor(private authService: AuthService,
+     private customerService: CustomerService,
+      private router: Router,
+      private route: ActivatedRoute) { 
+
+      this.route.queryParams.subscribe(params => {
+          this.userRole = params['role'];
+          // console.log(this.userRole)
+      });
+
+      }
 
   ngOnInit() {
 
     this.initializeCustomer();
     this.isLoggedIn = this.authService.isLoggedIn();
     this.getLoggedInCustomer();
+
   }
 
   getLoggedInCustomer(): void {
@@ -54,7 +66,20 @@ export class AppComponent implements OnInit {
     // Display alert message
     alert('Successfully logged out');
 
-    this.router.navigate(['/welcome']);
+    // Check for role and navigate accordingly
+    this.route.queryParams.subscribe(params => {
+      if(params['role'] === 'admin') {
+        // Navigate to admin home page
+        this.router.navigate(['/admin/login'], 
+        {
+          queryParams: { role: 'admin'}
+        });      
+      } else {
+        // Navigate to customer home page
+        this.router.navigate(['/welcome']);                    
+      }
+      
+    });
   }
 
   initializeCustomer(): void {
@@ -69,7 +94,8 @@ export class AppComponent implements OnInit {
       imageUrl: null,
       address: null,
       orders: null,
-      status: null
+      status: null,
+      cart: null
 
     } 
   }
