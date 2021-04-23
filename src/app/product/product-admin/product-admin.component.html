@@ -1,13 +1,15 @@
+
 <div class="container">
     <div class="row">
-        <div class="col card left" [routerLink]="['/product-add']">
+        <div class="col card left" [routerLink]="['product-add']">
             <p>Add Product</p>
         </div>
-        <div class="col card right">
+        <div class="col card right" [routerLink]="['product-update']">
             <a><p>Update Product</p></a>
         </div>
-        <div class="col card left bg-danger" >
+        <div class="col card left bg-danger" [routerLink]="['product-delete']">
             <p>Delete Product</p>
         </div>
     </div>
 </div>
+<router-outlet></router-outlet>

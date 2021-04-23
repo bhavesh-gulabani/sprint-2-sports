@@ -1,0 +1,43 @@
+.control-wrapper {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+
+label {
+    margin-left: 1.5em;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+input[type=text], [type=tel], [type=email], [type=password] {
+    width: 90%;
+    margin-left: 1.5em;
+}
+
+.invalid-feedback {
+    margin-left: 2em;
+}
+
+#final-row {
+    text-align: center;
+}
+
+#continue-button {
+    width: 10em;
+    height: 5em;
+    border-color: red;
+    background: red;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: Roboto;
+}
+
+#continue-button:disabled,
+#continue-button[disabled]{
+    border-color: #5cdefc;
+    background: #5cdefc
+
+}
