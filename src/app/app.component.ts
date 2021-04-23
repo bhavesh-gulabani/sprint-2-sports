@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Customer } from './customer/customer';
 import { AuthService } from './service/auth.service';
+import { CustomerService } from './service/customer.service';
 
 @Component({
   selector: 'app-root',
@@ -12,17 +12,74 @@ import { AuthService } from './service/auth.service';
 export class AppComponent implements OnInit {
   title = 'online-sports-shoppe';
   isLoggedIn: boolean = false;
+  errorMessage: string;
+  imageUrl: string;
   customerLoggedIn: Customer;
+  userRole: string;
 
-  constructor() {  }
+  constructor(private authService: AuthService,
+     private customerService: CustomerService,
+      private router: Router,
+      private route: ActivatedRoute) { 
+
+      this.route.queryParams.subscribe(params => {
+          this.userRole = params['role'];
+          // console.log(this.userRole)
+      });
+
+      }
 
   ngOnInit() {
+
     this.initializeCustomer();
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.getLoggedInCustomer();
+
+  }
+
+  getLoggedInCustomer(): void {
+
+    if (this.isLoggedIn) {
+      // Get user email
+      let email = sessionStorage.getItem('email');
+
+      // Get user details from email
+       this.customerService.getCustomerByEmail(email).subscribe({
+        next: customer => {this.customerLoggedIn = customer; this.imageUrl = this.customerLoggedIn.imageUrl},
+        error: err => this.errorMessage = err
+      });
+    }
     
   }
-  
+
+  toggleOptions() {
+    let hoverDiv = document.getElementsByClassName('hover-container');
+    hoverDiv[0].classList.toggle('hide')
+  }
+
   logout() {
+    console.log('In logout...')
+    this.authService.logout();
     this.isLoggedIn = false;
+    this.toggleOptions();
+    
+    // Display alert message
+    alert('Successfully logged out');
+
+    // Check for role and navigate accordingly
+    this.route.queryParams.subscribe(params => {
+      if(params['role'] === 'admin') {
+        // Navigate to admin home page
+        this.router.navigate(['/admin/login'], 
+        {
+          queryParams: { role: 'admin'}
+        });      
+      } else {
+        // Navigate to customer home page
+        this.router.navigate(['/welcome']);                    
+      }
+      
+    });
   }
 
   initializeCustomer(): void {
@@ -36,7 +93,11 @@ export class AppComponent implements OnInit {
       dateOfBirth: null,
       imageUrl: null,
       address: null,
-      orders: null
+      orders: null,
+      status: null,
+      cart: null
+
     } 
   }
+
 }

@@ -6,16 +6,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { AuthInterceptor } from './service/auth-interceptor.service';
+import { CustomerModule } from './customer/customer.module';
+import { AdminModule } from './admin/admin.module';
+import { CartModule } from './cart/cart.module';
+import { ProductModule } from './product/product.module';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+
+  
   ],
   imports: [
     BrowserModule,
+    CustomerModule,
+    AdminModule,
+    CartModule,
     AppRoutingModule,
     HttpClientModule,
+    ProductModule
   ],
   providers: [
     { 

@@ -1,0 +1,49 @@
+<div class="container">
+    <p id="title">Your Account</p>
+    <div class="row">
+        <div class="col">
+            <!-- Name -->
+            <div class="card">
+                <p class="label">Name:</p>
+                <p class="value">{{ customer.name }}</p>
+            </div>
+            <!-- Email -->
+            <div class="card">
+                <p class="label">Email:</p>
+                <p class="value">{{ customer.email }}</p>
+            </div>
+            <!-- Phone -->
+            <div class="card">
+                <p class="label">Phone:</p>
+                <p class="value">{{ customer.contactNo }}</p>
+            </div>            
+            <!-- Password -->
+            <div class="card">
+                <p class="label">Password:</p>
+                <p class="value"> ********* </p>
+            </div>            
+            <!-- Date of Birth -->
+            <div class="card">
+                <p class="label">Date of birth:</p>
+                <p class="value">{{ customer.dateOfBirth }}</p>
+            </div>            
+        </div>
+
+        <!-- Address block -->
+        <div class="col">
+            <div class="card">
+                <p class="label">Address:</p>
+                <p class="label">Street: <span>{{ customer.address.street }}</span></p>
+                <p class="label">Door number: <span>{{ customer.address.doorNo }}</span></p>
+                <p class="label">Area: <span>{{ customer.address.area }}</span></p>
+                <p class="label">City: <span>{{ customer.address.city }}</span></p>
+                <p class="label">State: <span>{{ customer.address.state }}</span></p>
+                <p class="label">Pincode: <span>{{ customer.address.pincode }}</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button [routerLink]="['/customers', 'edit', customer.id]">Edit</button>
+        <button [routerLink]="['/welcome']">Done</button>
+    </div>
+</div>

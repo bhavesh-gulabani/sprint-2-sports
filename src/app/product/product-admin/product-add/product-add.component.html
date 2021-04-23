@@ -1,0 +1,98 @@
+<form novalidate (ngSubmit)="save()" [formGroup]="addProductForm">
+    <div class="form-group row mb-2">
+        
+        <!-- Name -->
+        <div class="control-wrapper">
+            <label class="" for="nameId">Product Name</label>
+            <input class="form-control"
+                    id="nameId"
+                    type="text"
+                    formControlName="name"/>
+        </div>
+
+        <!-- Category -->
+        <div class="control-wrapper">
+            <label class="" for="categoryId">Product Category</label>
+            <input class="form-control"
+                    id="categoryId"
+                    type="text"
+                    formControlName="category" />           
+        </div>
+
+        <!-- Description -->
+        <div class="control-wrapper">
+            <label class="" for="descriptionId">Description</label>
+            <input class="form-control"
+                    id="descriptionId"
+                    type="text"
+                    formControlName="description"/>           
+        </div>
+
+        <!-- Brand -->
+        <div class="control-wrapper">
+            <label class="" for="brandId">Brand Name</label>
+            <input class="form-control"
+                    id="brandId"
+                    type="text"
+                    formControlName="brand"/>         
+        </div>
+
+        <!-- color -->
+        <div class="control-wrapper">
+            <label class="" for="colorId">Product Color</label>
+            <input class="form-control"
+                    id="colorId"
+                    type="text"
+                    formControlName="color"/>         
+        </div>
+
+        <!-- Size -->
+        <div class="control-wrapper">
+            <label class="" for="sizeId">Product Size:</label>
+            <label >Choose a Size:&nbsp;</label>
+         <select class="form-control" 
+            id="sizes" name="sizelist"
+            formControlName="size" >
+             <option value="S">Small</option>
+             <option value="M">Medium</option>
+             <option value="L">Large</option>
+         </select>         
+        </div>
+
+        <!-- Price -->
+        <div class="control-wrapper">
+            <label class="" for="mrpId">Product Price: </label>
+            <input class="form-control" type="text" id="mrp" name="mrp" formControlName="mrp"/>      
+        </div>
+
+        <!-- Discount -->
+        <div class="control-wrapper">
+            <label class="" for="mrpId">Product Discount: </label>            
+            <label >Range(1-100):</label>
+            <input class="form-control" type="number" id="discount" name="discount" min="1" max="100"
+            formControlName="discount"/>      
+        </div>
+
+        <!-- Stock -->
+        <div class="control-wrapper">
+            <label class="" for="mrpId">Product Stock: </label>
+            <input class="form-control" type="number" id="stock" name="stock" 
+            formControlName="stock"/>      
+        </div>
+
+        <!-- Delivery Date -->
+        <div class="date">
+            <label class="" >Estimated Delivery Date:</label>
+            <input  id="estimatedDeliveryId"
+                    type="date"
+                    formControlName="estimatedDelivery" />
+        </div>
+            
+        <!-- Submit -->
+        <div class="control-wrapper" id="final-row">
+            <button id="continue-button" type="submit" >Add Product</button>
+        </div>
+    
+        
+    </div>
+</form>

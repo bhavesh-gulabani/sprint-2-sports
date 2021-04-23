@@ -1,5 +1,5 @@
-<!-- Header with 2 nav bars -->
-<header>
+<!-- Header with 2 nav bars for Customer -->
+<header *ngIf="userRole !== 'admin'">
   <!-- Nav bar with search and login button -->
   <div class="row" id="top-nav">
       <div class="col-2" id="title">
@@ -13,14 +13,25 @@
       </div>
       
       <div class="col-1">
-          <a href="/">
+          <a [routerLink]="['/customers', 'cart']">
               <img src="../assets/images/cart.png" id="cart-icon">
           </a>
       </div>
 
-      <div class="col-2">
-          <button id="login-button">Login</button>
-      </div>
+      <div class="col-2" *ngIf="!isLoggedIn">
+        <button id="login-button" [routerLink]="['/customers', 'login']">Login</button>
+    </div>
+
+    <div class="col-2" *ngIf="isLoggedIn" (click)="toggleOptions()" >
+        <img [src]="imageUrl" class="user-image">
+    </div>
+
+       <!-- Hover options -->
+    <div class="container hover-container hide">
+        <div class="row hover-row"><a (click)="toggleOptions()" class="hover-option" [routerLink]="['/customers', 'profile', customerLoggedIn.id]">Your account</a></div>
+        <div class="row hover-row"><a (click)="toggleOptions()" class="hover-option" [routerLink]="['/customers', customerLoggedIn.id, 'orders']">Your orders</a></div>
+        <div class="row hover-row"><a (click)="logout()" class="hover-option">Logout</a></div>
+    </div>
 
   </div> 
 
@@ -36,10 +47,43 @@
               <a class="nav-link" href="#">Cricket</a>
               <a class="nav-link" href="#">Football</a>
               <a class="nav-link" href="#">Tennnis</a>
+              <a class="nav-link" [routerLink]="['/product-admin']">Edit Catalog</a>
           </div>
       </div>
   </nav>
 </header>
+
+
+<!-- Header with single nav bar for Admin -->
+<header *ngIf="userRole === 'admin'">
+    <div class="row" id="top-nav">
+        <div class="col-2" id="title">
+            <a>Sports Center</a>
+        </div>
+        <div class="col-8">
+            <div class="wrapper">
+                <p id="admin-title">Admin Section</p>
+            </div>
+        </div>
+  
+        <div class="col-2" *ngIf="!isLoggedIn">
+          <button id="login-button" [routerLink]="['/admin', 'login']" [queryParams] = "{'role':'admin'}">Login</button>
+        </div>
+  
+      <div class="col-2" *ngIf="isLoggedIn" (click)="toggleOptions()" >
+          <img [src]="imageUrl" class="user-image">
+      </div>
+  
+         <!-- Hover options -->
+      <div class="container hover-container hide">
+          <div class="row hover-row"><a (click)="toggleOptions()" class="hover-option">Your account</a></div>
+          <div class="row hover-row"><a (click)="logout()" class="hover-option">Logout</a></div>
+      </div>
+  
+    </div> 
+
+</header>
+
 <br>
 
 <router-outlet></router-outlet>

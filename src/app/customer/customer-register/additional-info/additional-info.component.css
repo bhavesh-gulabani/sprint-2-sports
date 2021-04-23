@@ -1,0 +1,62 @@
+.control-wrapper {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+
+label {
+    margin-left: 1.5em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+input[type=text], [type=date], [type=file] {
+    width: 90%;
+    margin-left: 1.5em;
+}
+
+#final-row {
+    text-align: center;
+}
+
+.invalid-feedback {
+    margin-left: 2em;
+}
+
+#register-button {
+    width: 5em;
+    height: 2.5em;
+    border-color: #00D1FF;
+    background: #00D1FF;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: Roboto;
+}
+
+#register-button:disabled,
+#register-button[disabled]{
+    border-color: #5cdefc;
+    background: #5cdefc
+
+}
+
+.group-wrapper {
+    width: 100%;
+}
+
+.row {
+    margin: 0;
+    width: 25em;
+
+}
+.col {
+    margin: 0;
+    padding: 0;
+}
+
+
+.invalid-feedback {
+    margin-top: 0.5em;
+}

@@ -1,0 +1,58 @@
+<div class="card" id="login">
+    <p class="card-title">Sign-In</p>
+    <div class="card-body">
+      <form novalidate
+        id="login-form"
+        (ngSubmit)="signIn(loginForm)"
+        #loginForm="ngForm"
+        autocomplete="off">
+        <fieldset>
+          <div class="form-group row">
+            <input class="form-control"
+                  id="emailId"
+                  type="email"
+                  placeholder="Email (required)"
+                  required
+                  email
+                  ngModel
+                  name="email"
+                  #emailVar="ngModel"
+                  [ngClass]="{'is-invalid': (emailVar.touched || emailVar.dirty) && !emailVar.valid }" />
+            <span class="invalid-feedback">
+              <span *ngIf="emailVar.errors?.email">
+                Please enter a valid email address.
+              </span>
+              <span *ngIf="emailVar.errors?.required">
+                Email is required.
+              </span>
+            </span>
+          </div>
+  
+          <div class="form-group row">
+            <input class="form-control"
+                    id="passwordId"
+                    type="password"
+                    placeholder="Password (required)"
+                    required
+                    ngModel
+                    name="password"
+                    #passwordVar="ngModel"
+                    [ngClass]="{'is-invalid': (passwordVar.touched || passwordVar.dirty) && !passwordVar.valid }" />
+            <span class="invalid-feedback" style="width: 50%;">
+              <span *ngIf="passwordVar.errors?.required">
+                Password is required.
+              </span>
+            </span>
+            <a id="forgot-pass-text" href=""><p>Forgot password</p></a>
+          </div>
+  
+          <div class="row">
+            <button id="login-button" type="submit" [disabled]="!loginForm.valid">Login</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>  
+    <div class="alert alert-danger"
+        *ngIf="errorMessage">{{errorMessage}}
+    </div>
+  </div>
