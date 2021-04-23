@@ -7,6 +7,7 @@ import { Order } from 'src/app/order/Order';
 import { CustomerService } from 'src/app/service/customer.service';
 import { GenericValidator } from 'src/app/shared/generic-validator';
 import { NumberValidators } from 'src/app/shared/number.validator';
+import Swal from 'sweetalert2';
 import { Customer } from '../../customer';
 
 
@@ -77,7 +78,13 @@ export class AdditionalInfoComponent implements OnInit {
     this.customerService.addCustomer(this.customer).subscribe({
       next: customer => {
         console.log(customer);
-        alert('Account successfully created');
+        // alert('Account successfully created');
+        Swal.fire({
+          title: 'Welcome', 
+          text: 'Account successfully created', 
+          icon: 'success',
+          width: '25rem'
+          });
       },
       error: err => this.errorMessage = err
     });

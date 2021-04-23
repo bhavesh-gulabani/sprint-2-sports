@@ -13,7 +13,7 @@
       </div>
       
       <div class="col-1">
-          <a [routerLink]="['/customers', 'cart']">
+          <a [routerLink]="['/customers', customerLoggedIn.id, 'cart']">
               <img src="../assets/images/cart.png" id="cart-icon">
           </a>
       </div>
@@ -42,11 +42,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-              <a class="nav-link active" href="#">All <span class="sr-only">(current)</span></a>
-              <a class="nav-link" href="#">Badminton</a>
-              <a class="nav-link" href="#">Cricket</a>
-              <a class="nav-link" href="#">Football</a>
-              <a class="nav-link" href="#">Tennnis</a>
+              <a class="nav-link active" [routerLink]="['/products']">All <span class="sr-only">(current)</span></a>
+              <a class="nav-link" [routerLink]="['/products', 'badminton']">Badminton</a>
+              <a class="nav-link" [routerLink]="['/products', 'cricket']">Cricket</a>
+              <a class="nav-link" [routerLink]="['/products', 'football']">Football</a>
+              <a class="nav-link" [routerLink]="['/products', 'tennis']">Tennnis</a>
           </div>
       </div>
   </nav>
@@ -70,7 +70,7 @@
         </div>
   
       <div class="col-2" *ngIf="isLoggedIn" (click)="toggleOptions()" >
-          <img [src]="imageUrl" class="user-image">
+          <img src="../assets/images/person-placeholder.png" class="user-image">
       </div>
   
          <!-- Hover options -->

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Customer } from './customer/customer';
 import { AuthService } from './service/auth.service';
 import { CustomerService } from './service/customer.service';
@@ -24,17 +25,21 @@ export class AppComponent implements OnInit {
 
       this.route.queryParams.subscribe(params => {
           this.userRole = params['role'];
-          // console.log(this.userRole)
       });
 
-      }
+      
+
+  }
 
   ngOnInit() {
 
     this.initializeCustomer();
+    // For first time login
+    this.authService.getLoggedInStatus.subscribe((loggedIn: boolean) => {this.isLoggedIn = loggedIn; this.getLoggedInCustomer();});
+
+    // For every initialization of the component
     this.isLoggedIn = this.authService.isLoggedIn();
     this.getLoggedInCustomer();
-
   }
 
   getLoggedInCustomer(): void {
@@ -64,7 +69,14 @@ export class AppComponent implements OnInit {
     this.toggleOptions();
     
     // Display alert message
-    alert('Successfully logged out');
+    // alert('Successfully logged out');
+     
+     Swal.fire({
+      title: 'See you', 
+      text: 'Successfully logged out', 
+      icon: 'success',
+      width: '25rem'
+    });
 
     // Check for role and navigate accordingly
     this.route.queryParams.subscribe(params => {
@@ -96,7 +108,6 @@ export class AppComponent implements OnInit {
       orders: null,
       status: null,
       cart: null
-
     } 
   }
 

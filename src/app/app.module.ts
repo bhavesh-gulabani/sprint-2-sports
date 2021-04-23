@@ -9,17 +9,20 @@ import { AuthInterceptor } from './service/auth-interceptor.service';
 import { CustomerModule } from './customer/customer.module';
 import { AdminModule } from './admin/admin.module';
 import { CartModule } from './cart/cart.module';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    
   ],
   imports: [
     BrowserModule,
     CustomerModule,
     AdminModule,
     CartModule,
+    ProductModule,
     AppRoutingModule,
     HttpClientModule,
   ],

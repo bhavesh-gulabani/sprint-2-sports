@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +22,13 @@ export class LoginComponent implements OnInit {
       this.authService.login(email, password).subscribe({
         next: token => {
           console.log(token);
-          alert('Successfully logged in');
-
+          // alert('Successfully logged in');
+          Swal.fire({
+            title: 'Welcome', 
+            text: 'Successfully logged in', 
+            icon: 'success',
+            width: '25rem'
+          });
           
           // Check for role and navigate accordingly
           this.route.queryParams.subscribe(params => {
@@ -41,7 +47,13 @@ export class LoginComponent implements OnInit {
           });
         },
         error: err => {
-          alert('Invalid credentials');
+          // alert('Invalid credentials');
+          Swal.fire({
+            title: 'Oops', 
+            text: 'Invalid credentials', 
+            icon: 'error',
+            width: '25rem'
+            });
         }
       });
     }

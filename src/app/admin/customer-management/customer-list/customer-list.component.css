@@ -55,6 +55,11 @@ button {
     font-family: Roboto;
 }
 
+button:hover {
+    background: #2ec4ff;
+    border-color: #2ec4ff;
+}
+
 .title {
     margin: auto;
     margin-left: 16.5em;

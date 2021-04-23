@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from '../../../customer/customer';
 import { CustomerService } from '../../../service/customer.service';
@@ -20,6 +21,8 @@ export class CustomerDetailComponent implements OnInit {
       const id = +param;
       this.getCustomer(id);
     }
+
+    this.checkStatus();
   }
 
   getCustomer(id: number): void {
@@ -28,5 +31,14 @@ export class CustomerDetailComponent implements OnInit {
       error: err => this.errorMessage = err
     });
   }
+
+  checkStatus() {
+        
+    
+    
+
+  }
+
+
 
 }

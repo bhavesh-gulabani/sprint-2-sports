@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Customer } from '../customer/customer';
@@ -9,6 +9,11 @@ import { catchError, tap, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+  @Output() getLoggedInStatus: EventEmitter<any> = new EventEmitter();
+
+  // ngOnInit() {
+  //   this.getLoggedInStatus.emit(this.isLoggedIn());
+  // }
 
   private baseUrl = 'http://localhost:9898/sports/users/authenticate';
   constructor(private http: HttpClient) { }
@@ -20,15 +25,17 @@ export class AuthService {
                 data => {
                     sessionStorage.setItem('email', email);
                     sessionStorage.setItem('token', 'Bearer ' + data.token);
+                    this.getLoggedInStatus.emit(this.isLoggedIn());
                     return data;
                 }
             ),
-            tap(data => console.log('Token: ' + JSON.stringify(data))),
+            tap(data => {console.log('Token: ' + JSON.stringify(data));}),
             catchError(this.handleError)
         );
   }
 
   isLoggedIn() {
+    
     let user = sessionStorage.getItem('email');
     console.log(!(user === null));
     return !(user === null);

@@ -1,3 +1,9 @@
+#page-title {
+    margin: 0;
+    margin-left: 5.7em;
+    font-size: 2em;
+}
+
 .card-container {
     display: flex;
     justify-content: center;
@@ -38,4 +44,9 @@ button {
     font-weight: 500;
     color: #FFFFFF;
     font-family: Roboto;
+}
+
+button:hover {
+    background: #2ec4ff;
+    border-color: #2ec4ff;
 }

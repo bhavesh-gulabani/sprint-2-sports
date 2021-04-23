@@ -1,3 +1,6 @@
+<div class="row">
+    <p id="page-title">Customer Details</p>
+</div>
 <div class="card-container">
     <div class="card">
         <div class="row">
@@ -21,6 +24,10 @@
                         </div>
                         <div class="row">
                             <p>Status: <span style="color:#00d600">{{ customer.status }}</span></p>
+                            <!-- <input type="radio" name="customer-status" value="Valid" [checked]=" customer.status === 'Valid' "> 
+                            <label for="Valid">Valid</label>
+                            <input type="radio" name="customer-status" value="Invalid" [checked]=" customer.status === 'Invalid' ">
+                            <label for="Invalid">Invalid</label> -->
                         </div>
                         <div class="row back">
                             <button [routerLink]="['/admin', 'customers']" [queryParams]="{ role:'admin' }">Back</button>

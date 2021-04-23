@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from 'src/app/service/customer.service';
+import Swal from 'sweetalert2';
 import { Customer } from '../customer';
 
 @Component({
@@ -94,7 +95,13 @@ export class CustomerEditComponent implements OnInit {
   onSaveComplete() {
     // Reset the form to clear the flags
     this.customerEditForm.reset();
-    alert('Successfully updated!')
+    // alert('Successfully updated!')
+    Swal.fire({
+      title: 'Success', 
+      text: 'Account successfully updated', 
+      icon: 'success',
+      width: '25rem'
+      });
     // console.log('Before navigating...', this.customer);
 
     this.router.navigate(['/customers', 'profile', this.customer.id]);

@@ -12,6 +12,11 @@
     background-color: #00D1FF;
 }
 
+.left:hover {
+    background: #2ec4ff;
+    border-color: #2ec4ff;
+}
+
 
 .right {
     background-color: orange;

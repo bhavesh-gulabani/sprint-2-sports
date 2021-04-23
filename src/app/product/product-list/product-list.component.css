@@ -1,0 +1,52 @@
+.row, .card-group {
+    margin: 0;
+    padding: 0;
+}
+
+.col-3 {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0em;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 20em;
+    height: 35.2em;
+    margin: auto;
+    text-align: center;
+}
+
+.prod-img {
+    height: 20em;
+}
+
+h2 {
+    padding-top: 0.5em;
+}
+
+.price {
+color: grey;
+font-size: 22px;
+}
+
+.description {
+    height: 4em;
+    padding: 0em 1em;
+}
+
+.card button {
+border: none;
+outline: 0;
+padding: 12px;
+color: white;
+background-color: #000;
+text-align: center;
+cursor: pointer;
+width: 100%;
+font-size: 18px;
+}
+
+.card button:hover {
+opacity: 0.7;
+}

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ViewCartComponent } from '../cart/view-cart/view-cart/view-cart.component';
+import { ViewCartComponent } from '../cart/view-cart/view-cart.component';
 import { AuthGuard } from '../service/auth-guard';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
@@ -24,7 +24,7 @@ const routes: Routes = [
     {path: 'customers/profile/:id', component: CustomerProfileComponent, canActivate: [AuthGuard]},
     {path: 'customers/edit/:id', component: CustomerEditComponent, canActivate: [AuthGuard]},
     {path: 'customers/:id/orders', component: CustomerOrdersComponent, canActivate: [AuthGuard]},
-    {path: 'customers/cart', component: ViewCartComponent, canActivate: [AuthGuard] },
+    {path: 'customers/:id/cart', component: ViewCartComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
