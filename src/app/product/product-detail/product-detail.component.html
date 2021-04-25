@@ -1,4 +1,36 @@
-<div class='card'>
+<div class="row"><p id="page-title">Product Details</p></div>
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <!-- Product image -->
+      <div class="col-4">
+        <img [src]='product.imageUrl' class="prod-img">
+      </div>
+      <!-- Product Name, quantity, add to cart button -->
+      <div class="col-8">
+        <div class="row"><p id="prod-name">{{ product.name }}</p></div>
+        <div class="row mid"><p>Price : {{ product.priceAfterDiscount | currency:'INR' }}</p></div>
+        <div class="row qty mid">Quantity : <span>  </span> <input type="number" [(ngModel)]="quantity" min="1" [max]= "product.stock" ></div>
+        <div class="row mid"><button (click)="addToCart()">Add to cart</button></div> 
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+
+      <div class="row bottom"><p><b>Brand:</b> {{ product.brand }}</p></div>
+      <div class="row bottom"><p><b>Description:</b> {{ product.description }} </p></div>
+      <div class="row bottom"><p><b>Category:</b> {{ product.category }}</p></div>
+      <div class="row bottom"><p><b>Color:</b> {{ product.color }}</p></div>
+      <div class="row bottom"><p><b>MRP:</b> {{ product.mrp | currency:'INR' }}</p></div>
+      <div class="row bottom"><p><b>Discount:</b> {{ product.discount }} %</p></div>
+      <div class="row bottom"><p><b>Size:</b> {{ product.size }}</p></div>
+      <div class="row bottom"><p><b>Stock:</b> {{ product.stock }}</p></div>
+
+    </div>
+  </div>
+</div>
+
+ <!-- <div class='card'>
     <div class='card-header'>
       {{pageTitle + ': ' + product?.productName}}
     </div>
@@ -70,4 +102,4 @@
         <i class='fa fa-chevron-left'></i> Back
       </button>
     </div>
-  </div>
+  </div> -->

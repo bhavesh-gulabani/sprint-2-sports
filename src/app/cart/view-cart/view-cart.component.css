@@ -1,3 +1,7 @@
+.card-container, .row {
+    margin: 0;
+}
+
 #page-title {
     margin: 0;
     margin-left: 5.7em;
@@ -7,4 +11,63 @@
 .card-container {
     display: flex;
     justify-content: center;
+}
+
+.card {
+    width: 80%;
+    margin-top: 2em;
+    border: none;
+    border-top: 1px solid black;
+    border-radius: 0;
+}
+
+.inside {
+    border-bottom: 1px solid black;
+    margin: 1em;
+}
+
+.left {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.right, .total {
+    font-size: 1.5em;
+}
+
+.total {
+    margin-right: 10em;
+    margin-left: auto;
+}
+
+.final {
+    margin-right: 13em;
+    margin-left: auto;
+}
+
+.product-img {
+    width: 12em;
+    margin: 1em;
+}
+
+button {
+    width: 11.5em;
+    height: 3em;
+    border-color: #00D1FF;
+    background: #00D1FF;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: Roboto;
+    margin: 0.5em;
+    margin-top: 0em;
+    float: right;
+}
+
+button:hover {
+    background: #2ec4ff;
+    border-color: #2ec4ff;
 }

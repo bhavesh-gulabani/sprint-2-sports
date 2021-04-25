@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { Cart } from 'src/app/cart/cart';
-import { CartModule } from 'src/app/cart/cart.module';
 import { Customer } from 'src/app/customer/customer';
-import { CustomerProfileComponent } from 'src/app/customer/customer-profile/customer-profile.component';
 import { CustomerService } from 'src/app/service/customer.service';
 import { ProductService } from 'src/app/service/product-service';
 import { Product } from '../product';
@@ -19,15 +18,11 @@ export class ProductListComponent implements OnInit {
 
   customerLoggedIn: Customer;
   cart: Cart;
+  cartItems: Map<Product, number> = new Map();
 
-  constructor(private productService: ProductService, private customerService: CustomerService) { 
+  constructor(private productService: ProductService, private customerService: CustomerService, private router: Router) { }
 
-  }
-
-  ngOnInit() {
-    const currentUrl: string = window.location.href;
-    if (currentUrl.split('/')[-1])
-
+  ngOnInit() { 
 
     this.productService.getProducts().subscribe({
       next: products => {this.products = products; console.log(this.products)},
@@ -38,23 +33,67 @@ export class ProductListComponent implements OnInit {
     this.getCustomer();
   }
 
+
+  findProductById(id: number): Product {
+    let product = null;
+    this.products.forEach(prod => {
+      if (prod.id === id) {
+        product = prod;
+      }
+    });
+    return product;
+  }
+
+  // Method to add items to the customer cart
   addToCart(product: Product) {
 
-    // Update the cart of this customer
+    // Get the currrent cart of the customer
     this.cart = this.customerLoggedIn.cart;
+
+    // Initialize cart if it does not exist
     if (this.cart === null) {
       this.initializeCart();
     }
+    
+    // If items already exist in the cart, update the same cart
+    if (Object.keys(this.cart.items).length !== 0) {
 
-    this.cart.items.set(product, 1);
+      // Populate the Map<Product, Integer> with items already in the customer's cart
+      Object.keys(this.cart.items).forEach(key => {
+        let productId = Number(key.substring(12, 15));
+        if (isNaN(productId)) {
+          productId = Number(key.substring(19, 22));
+        }
+        let productFound: Product = this.findProductById(productId);
+        this.cartItems.set(productFound, this.cart.items[key]);
+      });
+    } 
+    
+    // Add the selected product to the cart
+    this.cartItems.set(product, 1);
 
+    // Convert the Map<Product, number> to object{string: number} to match the data format for server
+    const convertedCartItems = {};
+    this.cartItems.forEach((val: number, key: Product) => {
+      let stringifiedKey = `product: {'id' : '${key.id}'}`
+      convertedCartItems[stringifiedKey] = val;
+    });
+
+    console.log('1 : ',convertedCartItems)
+
+    // Set the items attribute of the cart
+    this.cart.items = convertedCartItems;
+
+    console.log('2 : ',this.cart)
+
+    // Set the customer cart 
     this.customerLoggedIn.cart = this.cart;
 
-    // Update the customer details in database
-    this.customerService.updateCustomer(this.customerLoggedIn).subscribe({
-      next: customer => {this.customerLoggedIn = customer; console.log(customer);},
-      error: err => console.log(err)
-    })
+    console.log('3 : ',this.customerLoggedIn.cart)
+
+
+    // Send PUT request to update customer details in the database
+    this.updateCustomer();
   }
 
   getCustomer(): Customer {
@@ -66,17 +105,21 @@ export class ProductListComponent implements OnInit {
       next: customer => {this.customerLoggedIn = customer; return this.customerLoggedIn;},
       error: err => this.errorMessage = err
     });
-
-    // return this.customerLoggedIn;
     return null;
-    
+  }
+
+  updateCustomer() {
+    this.customerService.updateCustomer(this.customerLoggedIn).subscribe({
+      next: customer => {this.customerLoggedIn = customer},
+      error: err => console.log(err)
+    });
   }
 
 
   initializeCart() {
     this.cart = {
       id: 0,
-      items: new Map<Product, number>(),
+      items: {},
       totalAmount: 0
     }
   }

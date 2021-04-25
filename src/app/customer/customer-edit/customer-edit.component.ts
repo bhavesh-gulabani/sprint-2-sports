@@ -51,6 +51,7 @@ export class CustomerEditComponent implements OnInit {
   }
 
   displayCustomer(customer: Customer): void {
+    console.log(customer);
     if (this.customerEditForm) {
       this.customerEditForm.reset();
     }
@@ -102,10 +103,7 @@ export class CustomerEditComponent implements OnInit {
       icon: 'success',
       width: '25rem'
       });
-    // console.log('Before navigating...', this.customer);
-
     this.router.navigate(['/customers', 'profile', this.customer.id]);
-    // this.router.navigate(['/welcome']);
   }
 
   

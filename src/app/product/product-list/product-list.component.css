@@ -19,6 +19,7 @@
 
 .prod-img {
     height: 20em;
+    cursor: pointer;
 }
 
 h2 {

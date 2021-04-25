@@ -1,13 +1,12 @@
-import { Product } from "../product/product";
-
-// export interface Cart {
-//     products: Product[];
-//     quantity: number;
-// }
+import { Cart } from "../cart/cart";
+import { Customer } from "../customer/customer";
+import { Payment } from "../payment/payment";
 
 export interface Order {
-
-    cart: Map<Product, number>,
-    // cart: Cart
-    
+    id: number;
+    amount: number;
+    billingDate: Date;
+    customer: Customer;
+    payment: Payment;
+    cart: Cart;
 }

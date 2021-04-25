@@ -8,7 +8,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
     {path: 'products', component: ProductListComponent, canActivate:[AuthGuard]},
-    {path: 'products/:category', component: ProductListCategoryComponent, canActivate:[AuthGuard]},
+    {path: 'products/categories/:category', component: ProductListCategoryComponent, canActivate:[AuthGuard]},
     {path: 'products/:id', component: ProductDetailComponent},
  
 ];

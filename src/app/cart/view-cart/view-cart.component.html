@@ -2,5 +2,29 @@
     <p id="page-title">Shopping Cart</p>
 </div>
 <div class="card-container">
-    <!-- <div class= -->
+    <div class="card">
+        <div class="row inside" *ngFor="let key of cartItems.keys()">
+            <div class="col left">
+                <img [src]="key.imageUrl" class="product-img">
+            </div>
+
+            <div class="col right">
+                <div class="row"><p>{{ key.name }}</p></div>
+                <div class="row"><p>Quantity : {{ cartItems.get(key) }}</p></div>
+            </div>
+            
+            <div class="col right">
+                <p>{{ key.priceAfterDiscount| currency:'INR' }}</p>
+            </div>
+        </div>
+        <div class="row total">
+            <p>Total : {{ cart.totalAmount | currency:'INR' }}</p>
+        </div>
+        <div class="row final">
+            <button (click)="placeOrder()">Proceed to buy</button>
+        </div>    
+    </div>
+    
 </div>
+
+

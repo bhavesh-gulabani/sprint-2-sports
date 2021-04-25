@@ -1,0 +1,102 @@
+<div class="row">
+    <p class="page-title">Payment Details</p>
+</div>
+<div class="container">
+    <div class="card">
+        <form novalidate (ngSubmit)="save()" [formGroup]="paymentForm">
+            <div class="form-group row mb-2">
+                
+                <!-- Payment Type -->
+                <div class="control-wrapper">
+                    <label class="" for="typeId">Payment Type</label>
+                    <div class="radio-wrapper">
+                        <input type="radio" formControlName="type" value="Cash" > Cash
+                        <input type="radio" formControlName="type" value="Card"> Card
+                    </div>
+                </div>
+
+                <!-- Card details, if payment type is card -->
+                <div class="card-wrapper" *ngIf="getPaymentType() === 'Card'">
+                    <div class="row">
+                        <div class="col">
+                            <!-- Card name -->
+                            <div class="control-wrapper">
+                                <label class="" for="cardNameId">Card name</label>
+                                <input class="form-control"
+                                        id="cardNameId"
+                                        type="text"
+                                        placeholder="Name (required)"
+                                        formControlName="name"
+                                        [ngClass]="{'is-invalid': displayMessage.name}" />
+                                <span class="invalid-feedback">
+                                    {{ displayMessage.name }}
+                                </span>
+                            </div>
+
+                            <!-- Card number -->
+                            <div class="control-wrapper">
+                                <label class="" for="cardNumberId">Card number</label>
+                                <input class="form-control"
+                                        id="cardNumberId"
+                                        type="text"
+                                        placeholder="Number (required)"
+                                        formControlName="number"
+                                        [ngClass]="{'is-invalid': displayMessage.number}" />
+                                <span class="invalid-feedback">
+                                    {{ displayMessage.number }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="col">
+
+                            <!-- Date of Expiry -->
+                            <div class="control-wrapper">
+                                <label class="" for="dateOfExpiryId">Date of Expiry</label>
+                                <input class="form-control"
+                                        id="dateOfExpiryId"
+                                        type="date"
+                                        formControlName="expiry" />
+                            </div>
+
+
+                            <!-- Card cvv -->
+                            <div class="control-wrapper">
+                                <label class="" for="cardCvvId">Card cvv</label>
+                                <input class="form-control"
+                                        id="cardCvvId"
+                                        type="text"
+                                        placeholder="CVV (required)"
+                                        formControlName="cvv"
+                                        [ngClass]="{'is-invalid': displayMessage.cvv}" />
+                                <span class="invalid-feedback">
+                                    {{ displayMessage.cvv }}
+                                </span>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+        
+                <!-- Payment Status -->
+                <div class="control-wrapper">
+                    <label class="" for="statusId">Payment Status</label>        
+                    <input class="form-control"
+                            id="statusId"
+                            type="text"
+                            formControlName="status"
+                            disabled />
+                </div>
+        
+                <!-- Submit button -->
+                <div class="control-wrapper" id="final-row">
+                    <button id="submit-button" type="submit" >Submit</button>
+                </div>
+            
+        
+            </div>
+        </form>
+
+
+
+    </div>
+</div>

@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 50%;
+    padding: 2em;
+}
+
+.page-title {
+    font-size: 2em;
+    margin-left: 15.8em;
+}
+
+.control-wrapper {
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+
+.radio-wrapper {
+    margin-top: 0.5em;
+    margin-left: 1.5em;
+    font-size: 1.2em;
+}
+
+.card-wrapper {
+    width: 100%;
+}
+
+label {
+    margin-left: 1.5em;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+input[type=text], [type=tel], [type=date] {
+    width: 90%;
+    margin-left: 1.5em;
+}
+
+.invalid-feedback {
+    margin-left: 2em;
+}
+
+#final-row {
+    text-align: center;
+}
+
+#submit-button {
+    width: 5em;
+    height: 2.5em;
+    border-color: #00D1FF;
+    background: #00D1FF;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: Roboto;
+}
+
+#submit-button:disabled,
+#submit-button[disabled]{
+    border-color: #5cdefc;
+    background: #5cdefc
+
+}

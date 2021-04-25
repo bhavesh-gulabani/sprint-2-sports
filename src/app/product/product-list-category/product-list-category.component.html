@@ -1,1 +1,11 @@
-<p>product-list-category works!</p>
+<div class="row card-group">
+  <div class="col-3"  *ngFor="let product of products">      
+    <div class="card">
+      <img [src]="product.imageUrl" class="prod-img" [routerLink]="['/products', product.id]">
+      <h2>{{ product.name }}</h2>
+      <p class="price">{{ product.priceAfterDiscount | currency:'INR' }}</p>
+      <p class="description">{{ product.description }}</p>
+      <button (click)="addToCart(product)">Add to Cart</button>
+    </div>
+  </div>
+</div>

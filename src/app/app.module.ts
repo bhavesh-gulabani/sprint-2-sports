@@ -10,12 +10,13 @@ import { CustomerModule } from './customer/customer.module';
 import { AdminModule } from './admin/admin.module';
 import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
+import { OrderModule } from './order/order.module';
+import { PaymentModule } from './payment/payment.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
-    
+    WelcomeComponent    
   ],
   imports: [
     BrowserModule,
@@ -23,6 +24,8 @@ import { ProductModule } from './product/product.module';
     AdminModule,
     CartModule,
     ProductModule,
+    OrderModule,
+    PaymentModule,
     AppRoutingModule,
     HttpClientModule,
   ],
