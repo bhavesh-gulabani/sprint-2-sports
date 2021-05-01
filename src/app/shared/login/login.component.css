@@ -1,0 +1,65 @@
+.row {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+/* Login section */
+#login {
+    width: 29rem;
+    height: 29rem;
+    top: 4rem;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #B4B4B4;
+}
+
+#login-button {
+    width: 6rem;
+    height: 3rem;
+    border-color: #00D1FF;
+    background: #00D1FF;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: Roboto;
+}
+
+#login-button:disabled,
+#login-button[disabled]{
+    border-color: #85e8ff;
+    background: #85e8ff;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 40px;
+    margin-left: 3.4rem;
+    margin-top: 2rem;
+}    
+
+#login-form {
+    margin-top: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.7rem;
+}
+
+input[type=email], [type=password] {
+    width: 23rem;
+    height: 3rem;
+}
+
+span {
+    margin-left: 0.9rem;
+}
+
+#forgot-pass-text {
+    margin-left: auto;
+    margin-right: 1.6em;
+    margin-top: 2px;
+    color: #000000;
+    text-decoration: none;
+}

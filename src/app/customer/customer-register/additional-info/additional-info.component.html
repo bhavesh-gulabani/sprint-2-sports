@@ -1,0 +1,115 @@
+<form novalidate (ngSubmit)="save()" [formGroup]="additionalInfoForm">
+    <div class="form-group row mb-2">
+        
+        <!-- Date of Birth -->
+        <div class="control-wrapper">
+            <label class="" for="dateOfBirthId">Date of Birth</label>
+            <input class="form-control"
+                    id="dateOfBirthId"
+                    type="date"
+                    formControlName="dateOfBirth" />
+        </div>
+
+        <!-- Address -->
+        <div class="group-wrapper">
+            <label class="" for="addressId">Address Details</label>
+            <div class="row">
+                <div class="col">
+                    <!-- Street -->
+                    <div class="control-wrapper">
+                        <input class="form-control"
+                            id="streetId"
+                            type="text"
+                            placeholder="Street"
+                            formControlName="street"
+                            [ngClass]= "{'is-invalid': displayMessage.street}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.street}}
+                            </span>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Door number -->
+                    <div class="control-wrapper">
+                        <input class="form-control"
+                            id="doorNoId"
+                            type="text"
+                            placeholder="Door number"
+                            formControlName="doorNo"
+                            [ngClass]= "{'is-invalid': displayMessage.doorNo}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.doorNo}}
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <!-- Area -->
+                    <div class="control-wrapper">
+                        <input class="form-control"
+                            id="areaId"
+                            type="text"
+                            placeholder="Area"
+                            formControlName="area"
+                            [ngClass]= "{'is-invalid': displayMessage.area}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.area}}
+                            </span>
+                    </div>
+                </div>
+                <div class="col">
+                     <!-- City -->
+                    <div class="control-wrapper">
+                        <input class="form-control"
+                            id="cityId"
+                            type="text"
+                            placeholder="City"
+                            formControlName="city"
+                            [ngClass]= "{'is-invalid': displayMessage.city}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.city}}
+                            </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <!-- State -->
+                    <div class="control-wrapper">
+                        <input class="form-control"
+                            id="stateId"
+                            type="text"
+                            placeholder="State"
+                            formControlName="state"
+                            [ngClass]= "{'is-invalid': displayMessage.state}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.state}}
+                            </span>
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- Pincode -->
+                    <div class="control-wrapper">
+                        <input class="form-control"
+                            id="pincodeId"
+                            type="text"
+                            placeholder="Pincode"
+                            formControlName="pincode"
+                            [ngClass]= "{'is-invalid': displayMessage.pincode}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.pincode}}
+                            </span>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Submit button -->
+        <div class="control-wrapper" id="final-row">
+            <button id="register-button" type="submit" [disabled]="!additionalInfoForm.valid">Register</button>
+        </div>
+    </div>
+</form>

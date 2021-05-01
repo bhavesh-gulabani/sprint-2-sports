@@ -1,0 +1,52 @@
+#page-title {
+    font-size: 2em;
+    margin-left: 10.5em;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.row-container {
+    margin-left: 8em;
+}
+
+.card {
+    margin-top: 1em;
+    width: 80%;
+    font-size: 1.1em;
+    padding: 1em 2em;
+    border: 1px solid rgb(59, 59, 59);
+}
+
+#cart-title {
+    font-size: 1.5em;
+}
+
+.cart-start {
+    border-bottom: 1px solid black;
+}
+
+.inside {
+    border-bottom: 1px solid black;
+    margin: 1em;
+}
+
+.left {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.right {
+    font-size: 1.1em;
+}
+
+.product-img {
+    width: 10em;
+    margin: 1em;
+    cursor: pointer;
+}

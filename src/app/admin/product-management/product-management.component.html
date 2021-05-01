@@ -1,0 +1,18 @@
+<button [routerLink]="['/admin', 'dashboard']" [queryParams]="{ role:'admin'}">Dashboard</button>
+<div class="container">
+    <div class="row">
+        
+        <div class="col card left bg-success" [routerLink]="['product-view']">
+            <p>View Catalog</p>
+        </div>
+        <div class="col card left" [routerLink]="['product-add']">
+            <p>Add Product</p>
+        </div>
+      
+        <div class="col card left bg-danger" [routerLink]="['product-delete']">
+            <p>Delete Product</p>
+        </div>
+        
+    </div>
+</div>
+<router-outlet></router-outlet>

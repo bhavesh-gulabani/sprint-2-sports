@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-welcome',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(DOCUMENT) private document: Document) { }
+
+  refreshPage() {
+    this.document.defaultView.location.reload();
+  }
 
   ngOnInit() {
+
+    // if (sessionStorage.email && !this.isRefreshed) {
+    //   this.isRefreshed = true;
+    //   console.log(this.isRefreshed);
+    //   window.location.reload();
+    // }  
+
+    // this.refreshPage();
+
   }
 
 }

@@ -1,0 +1,78 @@
+<div class="row">
+    <p id="page-title">Customer Details</p>
+</div>
+<div class="card-container">
+    <div class="card">
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-5 content-left">
+                        <div class="row">
+                            <p>Customer ID: {{ customer.id }}</p>
+                        </div>
+                        <div class="row">
+                            <p>Name: {{ customer.name }}</p>
+                        </div>
+                        <div class="row">
+                            <p>Email: {{ customer.email }}</p>
+                        </div>
+                        <div class="row">
+                            <p>Phone: {{ customer.contactNo }}</p>
+                        </div>
+                        <div class="row">
+                            <p>Date of birth: {{ customer.dateOfBirth }}</p>
+                        </div>
+                        <div class="row">
+                            <p>Status:</p>
+                            
+                            <form (ngSubmit)="save()" [formGroup]="customerForm">
+                                <div class="form-group row mb-2">
+                                    <!-- Status -->
+                                    <div class="control-wrapper">
+                                       
+                                        <div class="radio-wrapper">
+                                            <input type="radio" formControlName="status" value="Valid" [checked]="customer.status === 'Valid'"> Valid
+                                            <input type="radio" formControlName="status" value="Invalid" [checked]="customer.status === 'Invalid'"> Invalid
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row back">
+                            <button [routerLink]="['/admin', 'customers']">Back</button>
+                            <button (click)="save()" id="save-button">Save</button>
+
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="row">
+                            <p><b>Address</b></p>
+                        </div> 
+                        <div class="row">
+                            <p>&emsp;Street: {{ customer.address.street }}</p>
+                        </div> 
+                        <div class="row">
+                            <p>&emsp;Door Number: {{ customer.address.doorNo }}</p>
+                        </div> 
+                        <div class="row">
+                            <p>&emsp;Area: {{ customer.address.area }}</p>
+                        </div> 
+                        <div class="row">
+                            <p>&emsp;City: {{ customer.address.city }}</p>
+                        </div> 
+                        <div class="row">
+                            <p>&emsp;State: {{ customer.address.state }}</p>
+                        </div> 
+                        <div class="row">
+                            <p>&emsp;Pincode: {{ customer.address.pincode }}</p>
+                        </div> 
+                    </div>
+                </div> 
+            </div>
+
+            <div class="col-2">
+                <img [src]="customer.imageUrl" id="person-img">
+            </div>
+        </div>
+    </div>
+</div>

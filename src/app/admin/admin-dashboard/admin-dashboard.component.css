@@ -1,0 +1,28 @@
+.col, .card {
+    height: 16em;
+    margin: 0.8em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.left {
+    background-color: #00D1FF;
+}
+
+.left:hover {
+    background: #2ec4ff;
+    border-color: #2ec4ff;
+}
+
+
+.right {
+    background-color: orange;
+
+}
+
+p {
+    font-size: 1.8em;
+}

@@ -6,14 +6,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { AuthInterceptor } from './service/auth-interceptor.service';
+import { CustomerModule } from './customer/customer.module';
+import { AdminModule } from './admin/admin.module';
+import { CartModule } from './cart/cart.module';
+import { ProductModule } from './product/product.module';
+import { OrderModule } from './order/order.module';
+import { PaymentModule } from './payment/payment.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent
+    WelcomeComponent    
   ],
   imports: [
     BrowserModule,
+    CustomerModule,
+    AdminModule,
+    CartModule,
+    ProductModule,
+    OrderModule,
+    PaymentModule,
+    SharedModule,
     AppRoutingModule,
     HttpClientModule,
   ],

@@ -1,0 +1,20 @@
+<form novalidate (ngSubmit)="delete()" [formGroup]="deleteProductForm">
+    <div class="form-group row mb-2">
+        
+        <!-- id -->
+        <div class="control-wrapper">
+            <label class="" for="prodId">Product id</label>
+            <input class="form-control"
+                    id="prodId"
+                    type="number"
+                    formControlName="id"/>
+        </div>
+   
+        <!-- Delete -->
+        <div class="control-wrapper" id="final-row">
+            <button id="continue-button" type="submit" >Delete Product</button>
+        </div>
+    
+        
+    </div>
+</form>

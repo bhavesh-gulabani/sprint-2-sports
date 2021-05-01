@@ -1,0 +1,177 @@
+<div class="container">
+    <p id="title">Edit Profile</p>
+    
+    <form novalidate (ngSubmit)="save()" [formGroup]="customerEditForm">
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                    <!-- Name -->
+                    <div class="control-wrapper">
+                        <label class="" for="nameId">Name</label>
+                        <input class="form-control"
+                            id="nameId"
+                            type="text"
+                            placeholder="Name (required)"
+                            formControlName="name"
+                            [ngClass]="{'is-invalid': displayMessage.name}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.name }}
+                        </span>
+                    </div>
+            
+                    <!-- Email -->
+                    <div class="control-wrapper">
+                        <label class="" for="emailId">Email</label>
+                        <input class="form-control"
+                                id="emailId"
+                                type="email"
+                                placeholder="Email (required)"
+                                formControlName="email"
+                                disabled
+                                [ngClass]="{'is-invalid': displayMessage.email}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.email }}
+                        </span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="control-wrapper">
+                        <label class="" for="passwordId">Password</label>
+                        
+                        <input class="form-control"
+                                id="passwordId"
+                                type="password"
+                                placeholder="Password (required)"
+                                formControlName="password"
+                                [ngClass]="{'is-invalid': displayMessage.password}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.password }}
+                        </span>
+                    </div>
+
+                    <!-- Mobile -->
+                    <div class="control-wrapper">
+                        <label class="" for="mobileId">Phone</label>
+                        <input class="form-control"
+                                id="mobileId"
+                                type="text"
+                                placeholder="Mobile number (optional)"
+                                formControlName="contactNo"
+                                [ngClass]="{'is-invalid': displayMessage.contactNo}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.contactNo }}
+                        </span>
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="control-wrapper">
+                        <label class="" for="dateOfBirthId">Date of Birth</label>
+                        <input class="form-control"
+                                id="dateOfBirthId"
+                                type="date"
+                                formControlName="dateOfBirth" />
+                    </div>
+                    
+                    </div>
+                </div>
+
+                <!-- Address block -->
+                <div class="col col-right" >
+                    <div class="card">  
+                        <div class="control-wrapper">
+                            <label class="" for="addressId">Address</label>        
+                        </div>       
+                        <!-- Street -->
+                        <div class="control-wrapper right">
+                            <label class="" for="streetId">Street</label>
+                            <input class="form-control"
+                                id="streetId"
+                                type="text"
+                                placeholder="Street"
+                                formControlName="street" 
+                                [ngClass]="{'is-invalid': displayMessage.street}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.street }}
+                        </span>
+                                
+                        </div>
+                        
+                        <!-- Door number -->
+                        <div class="control-wrapper right">
+                            <label class="" for="doorNoId">Door Number</label>
+                            <input class="form-control"
+                                id="doorNoId"
+                                type="text"
+                                placeholder="Door number"
+                                formControlName="doorNo"
+                                [ngClass]="{'is-invalid': displayMessage.doorNo}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.doorNo }}
+                        </span>
+                        </div>
+                
+                        <!-- Area -->
+                        <div class="control-wrapper right">
+                            <label class="" for="areaId">Area</label>
+                            <input class="form-control"
+                                id="areaId"
+                                type="text"
+                                placeholder="Area"
+                                formControlName="area"
+                                [ngClass]="{'is-invalid': displayMessage.area}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.area }}
+                        </span>
+                        </div>
+            
+                        <!-- City -->
+                        <div class="control-wrapper right">
+                            <label class="" for="cityId">City</label>
+                            <input class="form-control"
+                                id="cityId"
+                                type="text"
+                                placeholder="City"
+                                formControlName="city"
+                                [ngClass]="{'is-invalid': displayMessage.city}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.city }}
+                        </span>
+                        </div>
+                    
+                        <!-- State -->
+                        <div class="control-wrapper right">
+                            <label class="" for="stateId">State</label>
+                            <input class="form-control"
+                                id="stateId"
+                                type="text"
+                                placeholder="State"
+                                formControlName="state"
+                                [ngClass]="{'is-invalid': displayMessage.state}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.state }}
+                        </span>
+                        </div>
+                                        
+                        <!-- Pincode -->
+                        <div class="control-wrapper right">
+                            <label class="" for="pincodeId">Pincode</label>
+                            <input class="form-control"
+                                id="pincodeId"
+                                type="text"
+                                placeholder="Pincode"
+                                formControlName="pincode"
+                                [ngClass]="{'is-invalid': displayMessage.pincode}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.pincode }}
+                        </span>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="submit" [disabled]="!customerEditForm.valid">Save</button>
+            </div>
+    </form>
+</div>

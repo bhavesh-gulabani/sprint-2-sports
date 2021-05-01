@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="row back">
+        <button [routerLink]="['/admin', 'dashboard']" [queryParams]="{ role:'admin'}">Back</button>
+        <p class="title">Customer List</p>
+    </div>
+</div>
+<div class="row card-group">
+    <div class="col-3"  *ngFor="let customer of customers">
+        <div class="card" [routerLink]="['/admin', 'customers', customer.id]">
+            <div class="img-container">
+                <img [src]="customer.imageUrl" class="person-img">
+            </div>
+            <div class="card-body">
+                <p>Customer ID: {{ customer.id }}</p>
+                <p>Name: {{ customer.name }}</p>
+                <p>Email: {{ customer.email }}</p>
+                <p>Phone: {{ customer.contactNo }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+

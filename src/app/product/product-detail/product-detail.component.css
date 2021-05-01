@@ -1,0 +1,85 @@
+#page-title {
+    margin-left: 8em;
+    font-size: 2em;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    margin: 1em 3em;
+    width: 90%;
+    border: 1px solid black;
+}
+
+.row {
+    margin: 0;
+    padding-top: 1em;
+}
+
+#prod-name {
+    font-size: 2em;
+}
+
+.col-5 {
+    display: flex;
+    justify-content: center;
+}
+
+.prod-img {
+    height: 80%;
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+
+}
+
+#prod-qty {
+    font-size: 1.2em;
+
+}
+
+input[type=number] {
+    margin-left: 1.2em;
+    border-radius: 8px;
+    text-align: center;
+    padding-left: 10px;
+}
+
+.mid {
+    font-size: 1.2em;
+}
+
+    
+button {
+    width: 7.5em;
+    height: 2.5em;
+    border-color: #00D1FF;
+    background: #00D1FF;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: Roboto;
+    margin: 0.5em;
+    margin-left: 0;
+}
+
+button:hover {
+    background: #2ec4ff;
+    border-color: #2ec4ff;
+}
+hr {
+    width: 95%;
+    margin-left: 1.5em;
+}
+
+.bottom {
+    width: 100%;
+    margin-left: 2em;
+    font-size: 1.3em
+}
