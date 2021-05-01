@@ -58,9 +58,7 @@ export class BasicInfoComponent implements OnInit {
       contactNo: ['', [NumberValidators.phone()]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-
     });
-
   }
 
   ngAfterViewInit(): void {
@@ -80,7 +78,7 @@ export class BasicInfoComponent implements OnInit {
 
   populateCustomer(): void {
     this.customer = {...this.registerForm.value};
-    console.log(this.customer);
+    
   }
 
   save() {

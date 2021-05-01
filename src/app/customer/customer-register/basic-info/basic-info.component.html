@@ -11,13 +11,6 @@
                     formControlName="name"
                     [ngClass]="{'is-invalid': displayMessage.name}" />
             <span class="invalid-feedback">
-                <!-- [ngClass]="{'is-invalid': (registerForm.get('name').touched || registerForm.get('name').dirty) && !registerForm.get('name').valid }" /> -->
-                <!-- <span *ngIf="registerForm.get('name').errors?.required">
-                Please enter your name.
-                </span>
-                <span *ngIf="registerForm.get('name').errors?.minlength">
-                The name must be longer than 3 characters.
-                </span> -->
                 {{ displayMessage.name }}
             </span>
         </div>
@@ -68,7 +61,5 @@
         <div class="control-wrapper" id="final-row">
             <button id="continue-button" type="submit" [disabled]="!registerForm.valid">Continue</button>
         </div>
-    
-
     </div>
 </form>

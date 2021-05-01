@@ -16,11 +16,11 @@
 
 #login-button {
     width: 6rem;
-    height: 2.7rem;
+    height: 3rem;
     border-color: #00D1FF;
     background: #00D1FF;
     border-radius: 5px;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: #FFFFFF;
     font-family: Roboto;
@@ -28,8 +28,8 @@
 
 #login-button:disabled,
 #login-button[disabled]{
-    border-color: #5cdefc;
-    background: #5cdefc
+    border-color: #85e8ff;
+    background: #85e8ff;
 }
 
 .card-title {

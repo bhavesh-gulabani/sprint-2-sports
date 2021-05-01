@@ -37,6 +37,10 @@
   }
 
 
+  #screen-banner {
+    cursor: pointer;
+  }
+
 
 
   .marquee {

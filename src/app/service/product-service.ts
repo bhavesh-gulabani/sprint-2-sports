@@ -17,7 +17,7 @@ export class ProductService {
 
         return this.http.get<Product[]>(url)
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -26,7 +26,7 @@ export class ProductService {
 
       return this.http.get<Product[]>(`${this.customerUrl}/categories/${category}`)
         .pipe(
-          tap(data => console.log(JSON.stringify(data))),
+          // tap(data => console.log(JSON.stringify(data))),
           catchError(this.handleError)
       );
 
@@ -36,7 +36,7 @@ export class ProductService {
         
         return this.http.get<Product>(`${this.adminUrl}/${id}`)
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -46,7 +46,7 @@ export class ProductService {
         product.id = null;
         return this.http.post<Product>(`${this.adminUrl}`, product, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
           }
@@ -56,7 +56,7 @@ export class ProductService {
         const url = `${this.adminUrl}/${id}`;
         return this.http.delete<Product>(url, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
           );
     }
@@ -65,7 +65,7 @@ export class ProductService {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.put<Product>(this.adminUrl, product, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             map(() => product),
             catchError(this.handleError)
         );

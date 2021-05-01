@@ -4,6 +4,7 @@ import { Cart } from 'src/app/cart/cart';
 import { Customer } from 'src/app/customer/customer';
 import { CustomerService } from 'src/app/service/customer.service';
 import { ProductService } from 'src/app/service/product-service';
+import Swal from 'sweetalert2';
 import { Product } from '../product';
 
 @Component({
@@ -55,11 +56,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getCustomer(): Customer {
-    // Get user email
     let email = sessionStorage.getItem('email');
 
-    // Get user details from email
-     this.customerService.getCustomerByEmail(email).subscribe({
+    this.customerService.getCustomerByEmail(email).subscribe({
       next: customer => {this.customerLoggedIn = customer; return this.customerLoggedIn;},
       error: err => this.errorMessage = err
     });
@@ -86,6 +85,11 @@ export class ProductDetailComponent implements OnInit {
   // Method to add items to the customer cart
   addToCart() {
 
+    // If customer is not logged in, navigate to login page
+    if (!this.customerLoggedIn) {
+      this.router.navigate(['/customers', 'login']);
+    }
+
     // Get the currrent cart of the customer
     this.cart = this.customerLoggedIn.cart;
 
@@ -99,7 +103,8 @@ export class ProductDetailComponent implements OnInit {
 
       // Populate the Map<Product, Integer> with items already in the customer's cart
       Object.keys(this.cart.items).forEach(key => {
-        let productId = isNaN(Number(key.substring(12, 15))) ? Number(key.substring(19, 22)) : Number(key.substring(12, 15));
+        // let productId = isNaN(Number(key.substring(12, 15))) ? Number(key.substring(19, 22)) : Number(key.substring(12, 15));
+        let productId = Number(key.substring(19, 22));
         let productFound: Product = this.findProductById(productId);
         this.cartItems.set(productFound, this.cart.items[key]);
       });
@@ -121,10 +126,24 @@ export class ProductDetailComponent implements OnInit {
     // Set the customer cart 
     this.customerLoggedIn.cart = this.cart;
 
+    // Set orders to null to avoid cyclic reference
+    this.customerLoggedIn.orders = null;
+
     // Send PUT request to update customer details in the database
     this.updateCustomer();
   }
 
+  addConfirmation(){
+    Swal.fire({
+      title: 'Success', 
+      text: 'Product successfully added', 
+      icon: 'success',
+      showConfirmButton:false,
+      width: '25rem'
+      });
+      setTimeout(() => window.location.reload(), 1000);
+      
+  }
   
   initializeCart() {
     this.cart = {

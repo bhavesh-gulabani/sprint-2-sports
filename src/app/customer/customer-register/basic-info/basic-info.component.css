@@ -25,11 +25,11 @@ input[type=text], [type=tel], [type=email], [type=password] {
 
 #continue-button {
     width: 5em;
-    height: 2.5em;
+    height: 2.6em;
     border-color: #00D1FF;
     background: #00D1FF;
     border-radius: 5px;
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: 500;
     color: #FFFFFF;
     font-family: Roboto;
@@ -37,7 +37,7 @@ input[type=text], [type=tel], [type=email], [type=password] {
 
 #continue-button:disabled,
 #continue-button[disabled]{
-    border-color: #5cdefc;
-    background: #5cdefc
+    border-color: #85e8ff;
+    background: #85e8ff;	
 
 }

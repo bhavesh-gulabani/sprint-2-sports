@@ -1,0 +1,208 @@
+<form novalidate (ngSubmit)="save()" [formGroup]="updateProductForm" >
+    <div class="form-group row mb-2">
+        <!-- id -->
+       <div class="control-wrapper">
+        <label class="" for="prodId">Product id: {{prodId}}</label>        
+        </div>
+    </div>
+
+    <div class="form-group row mb-2">
+        
+        <!-- Name -->
+        <div class="control-wrapper">
+            <label  for="nameId">Product Name</label>
+            <input class="form-control"
+                    id="nameId"
+                    type="text"
+                    formControlName="name"
+                    [ngClass]="{
+                          'is-invalid':
+                          (updateProductForm.controls.name.touched || updateProductForm.controls.name.dirty) &&                         
+                          !updateProductForm.controls.name.valid }"
+            />
+            <span class="invalid-feedback">
+                <span *ngIf="updateProductForm.controls.name.errors?.required">Please enter value</span>                       
+            </span>
+        </div>
+
+        <!-- Category -->
+        <div class="control-wrapper">
+            <label  for="categoryId">Product Category</label>
+            <input class="form-control"
+                    id="categoryId"
+                    type="text"
+                    formControlName="category"[ngClass]="{
+                        'is-invalid':
+                          (updateProductForm.controls.category.touched || updateProductForm.controls.category.dirty) &&                         
+                          !updateProductForm.controls.category.valid }"
+            />
+            <span class="invalid-feedback">
+            <span *ngIf="updateProductForm.controls.category.errors?.required"></span>
+            Please enter value                    
+            </span>           
+        </div>
+
+        <!-- Description -->
+        <div class="control-wrapper">
+            <label  for="descriptionId">Description</label>
+            <input class="form-control"
+                    id="descriptionId"
+                    type="text"
+                    formControlName="description"[ngClass]="{
+                        'is-invalid':
+                          (updateProductForm.controls.description.touched || updateProductForm.controls.description.dirty) &&                         
+                          !updateProductForm.controls.description.valid 
+                      }"
+            />
+            <span class="invalid-feedback">
+            <span *ngIf="updateProductForm.controls.description.errors?.required">Please enter value</span>                       
+            </span>           
+        </div>
+
+        <!-- Brand -->
+        <div class="control-wrapper">
+            <label  for="brandId">Brand Name</label>
+            <input class="form-control"
+                    id="brandId"
+                    type="text"
+                    formControlName="brand"[ngClass]="{
+                        'is-invalid':
+                          (updateProductForm.controls.brand.touched || updateProductForm.controls.brand.dirty) &&                         
+                          !updateProductForm.controls.brand.valid 
+                      }"
+            />
+            <span class="invalid-feedback">
+            <span *ngIf="updateProductForm.controls.brand.errors?.required">Please enter value</span>                       
+            </span>         
+        </div>
+
+        <!-- color -->
+        <div class="control-wrapper">
+            <label  for="colorId">Product Color</label>
+            <input class="form-control"
+                    id="colorId"
+                    type="text"
+                    formControlName="color" [ngClass]="{
+                        'is-invalid':
+                          (updateProductForm.controls.color.touched || updateProductForm.controls.color.dirty) &&                         
+                          !updateProductForm.controls.color.valid 
+                      }"
+            />
+            <span class="invalid-feedback">
+            <span *ngIf="updateProductForm.controls.color.errors?.required">Please enter value</span>                       
+            </span>         
+        </div>
+
+        <!-- Size -->
+        <div class="control-wrapper">
+            <label  for="sizeId">Product Size:</label>
+            <label >Choose a Size:&nbsp;</label>
+        <select class="form-control" 
+            id="sizes" name="sizelist"
+            formControlName="size" [ngClass]="{
+                'is-invalid':
+                  (updateProductForm.controls.size.touched || updateProductForm.controls.size.dirty) &&                         
+                  !updateProductForm.controls.size.valid 
+              }"
+            >
+            <span class="invalid-feedback">
+            <span *ngIf="updateProductForm.controls.size.errors?.required">Please enter value</span>                       
+            </span>         
+                <option value="S">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+         </select>         
+        </div>
+
+        <!-- Price -->
+        <div class="control-wrapper">
+            <label  for="mrpId">Product Price: </label>
+            <input class="form-control" type="number" id="mrp" name="mrp" formControlName="mrp"[ngClass]="{
+                'is-invalid':
+                  (updateProductForm.controls.mrp.touched || updateProductForm.controls.mrp.dirty) &&                         
+                  !updateProductForm.controls.mrp.valid 
+              }"
+            />
+            <span class="invalid-feedback">
+                <span
+                  *ngIf="updateProductForm.controls.mrp.errors?.required"
+                  >Please enter value</span>     
+                <span *ngIf="updateProductForm.controls.mrp.errors?.min">
+                    Please enter value greater than 0
+                </span>                  
+            </span>      
+        </div>
+
+        <!-- Discount -->
+        <div class="control-wrapper">
+            <label  for="mrpId">Product Discount: </label>            
+            <label >Range(1-100):</label>
+            <input class="form-control" type="number" id="discount" name="discount" min="1" max="100"
+            formControlName="discount"[ngClass]="{
+                'is-invalid':
+                  (updateProductForm.controls.discount.touched || updateProductForm.controls.discount.dirty) &&                         
+                  !updateProductForm.controls.discount.valid 
+              }"
+            />
+            <span class="invalid-feedback">
+                <span *ngIf="updateProductForm.controls.discount.errors?.required">
+                    Please enter value
+                </span>  
+                <span *ngIf="updateProductForm.controls.discount.errors?.min">
+                    Please enter value greater than 0
+                </span>                                    
+            </span>      
+        </div>
+
+        <!-- Stock -->
+        <div class="control-wrapper">
+            <label  for="mrpId">Product Stock: </label>
+            <input class="form-control" type="number" id="stock" name="stock" 
+            formControlName="stock"[ngClass]="{
+                'is-invalid':
+                  (updateProductForm.controls.stock.touched || updateProductForm.controls.stock.dirty) &&                         
+                  !updateProductForm.controls.stock.valid 
+              }"
+            />
+            <span class="invalid-feedback">
+                <span
+                  *ngIf="updateProductForm.controls.stock.errors?.required"
+                  >Please enter value</span
+                ><span *ngIf="updateProductForm.controls.stock.errors?.min">
+                    Please enter value greater than 0
+                </span>                       
+            </span>
+                   
+        </div>
+
+        <!-- Delivery Date -->
+        <div class="date">
+            <label  >Estimated Delivery Date:</label>
+            <input  id="estimatedDeliveryId"
+                    type="date"
+                    formControlName="estimatedDelivery" [ngClass]="{
+                        'is-invalid':
+                          (updateProductForm.controls.estimatedDelivery.touched || updateProductForm.controls.estimatedDelivery.dirty) &&                         
+                          !updateProductForm.controls.estimatedDelivery.valid 
+                      }"
+                    />
+            <span class="invalid-feedback">
+                    <span *ngIf="updateProductForm.controls.estimatedDelivery.errors?.required">Please enter value</span>                  
+            </span>
+                      
+        </div>
+         
+        
+            
+        <!-- Submit -->
+        <div class="control-wrapper" id="final-row">
+            <button id="continue-button" type="submit" >Update Product</button>
+        </div>
+        <div class="control-wrapper" id="final-row">
+            <button (click)="delete()" >Delete Product</button>
+        </div>
+        
+    
+        
+    </div>
+</form>

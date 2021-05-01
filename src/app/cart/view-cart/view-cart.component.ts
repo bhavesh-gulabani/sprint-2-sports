@@ -29,11 +29,8 @@ export class ViewCartComponent implements OnInit {
       private router: Router,
       private orderService: OrderService,
       private customerService: CustomerService,
-       private cdref: ChangeDetectorRef) { }
+      ) { }
 
-  ngAfterContentChecked() {
-    this.cdref.detectChanges();
-  }
 
   ngOnInit() {
 
@@ -48,10 +45,7 @@ export class ViewCartComponent implements OnInit {
   }
 
   getCustomerLoggedIn() {
-    // Get user email
     let email = sessionStorage.getItem('email');
-
-    // Get user details from email
     this.customerService.getCustomerByEmail(email).subscribe({
       next: customer => {this.customerLoggedIn = customer;},
       error: err => this.errorMessage = err
@@ -79,27 +73,21 @@ export class ViewCartComponent implements OnInit {
         product = prod;
       }
     });
-
     return product;
-    
   }
 
   populateItems(): void {
     Object.keys(this.cart.items).forEach(key => {
-      let productId = Number(key.substring(12, 15));
-      if (isNaN(productId)) {
-        productId = Number(key.substring(19, 22));
-      }
-      console.log('Product ID : ',productId);
+      // let productId = isNaN(Number(key.substring(12, 15))) ? Number(key.substring(19, 22)) : Number(key.substring(12, 15));
+      let productId = Number(key.substring(19, 22));
       let productFound: Product = this.findProductById(productId);
       this.cartItems.set(productFound, this.cart.items[key]);
     });
-    
   }
 
   addOrder(order:Order) {
     this.orderService.addOrder(order, this.customerLoggedIn.id).subscribe({
-      next: order => {console.log(order); this.order = order; this.router.navigate(['/orders', this.order.id])},
+      next: order => {this.order = order; this.router.navigate(['/orders', this.order.id])},
       error: err => this.errorMessage = err
     });
   }
@@ -107,6 +95,43 @@ export class ViewCartComponent implements OnInit {
   placeOrder() {
     this.addOrder(this.order);
   }
+
+  removeItem(product: Product) {
+    
+    // Reduce the cost
+    this.cart.totalAmount -= product.priceAfterDiscount * this.cartItems.get(product);
+
+    // Remove the product
+    this.cartItems.delete(product);
+
+    // Convert the Map<Product, number> to object{string: number} to match the data format for server
+    const convertedCartItems = {};
+    this.cartItems.forEach((val: number, key: Product) => {
+      let stringifiedKey = `product: {'id' : '${key.id}'}`
+      convertedCartItems[stringifiedKey] = val;
+    });
+
+    // Set the items attribute of the cart
+    this.cart.items = convertedCartItems;
+
+    // Set the customer's cart to updated cart
+    this.customerLoggedIn.cart = this.cart;
+
+    // Set orders null to avoid cyclic reference
+    this.customerLoggedIn.orders = null;
+
+    // Send PUT request to update customer details in the database
+    this.updateCustomer();
+
+  }
+
+  updateCustomer() {
+    this.customerService.updateCustomer(this.customerLoggedIn).subscribe({
+      next: customer => {this.customerLoggedIn = customer},
+      error: err => this.errorMessage = err
+    });
+  }
+
 
   initializeCart() {
     this.cart = {
@@ -121,7 +146,6 @@ export class ViewCartComponent implements OnInit {
       id: 0,
       amount: 0,
       billingDate: null,
-      customer: null,
       payment: null,
       cart: null
     }

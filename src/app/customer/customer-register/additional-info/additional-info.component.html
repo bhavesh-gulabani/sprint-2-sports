@@ -17,23 +17,29 @@
                 <div class="col">
                     <!-- Street -->
                     <div class="control-wrapper">
-                        <!-- <label class="" for="streetId">Street</label> -->
                         <input class="form-control"
                             id="streetId"
                             type="text"
                             placeholder="Street"
-                            formControlName="street" />
+                            formControlName="street"
+                            [ngClass]= "{'is-invalid': displayMessage.street}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.street}}
+                            </span>
                     </div>
                 </div>
                 <div class="col">
                     <!-- Door number -->
                     <div class="control-wrapper">
-                        <!-- <label class="" for="doorNoId">Door Number</label> -->
                         <input class="form-control"
                             id="doorNoId"
                             type="text"
                             placeholder="Door number"
-                            formControlName="doorNo" />
+                            formControlName="doorNo"
+                            [ngClass]= "{'is-invalid': displayMessage.doorNo}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.doorNo}}
+                            </span>
                     </div>
                 </div>
             </div>
@@ -41,23 +47,29 @@
                 <div class="col">
                     <!-- Area -->
                     <div class="control-wrapper">
-                        <!-- <label class="" for="areaId">Area</label> -->
                         <input class="form-control"
                             id="areaId"
                             type="text"
                             placeholder="Area"
-                            formControlName="area" />
+                            formControlName="area"
+                            [ngClass]= "{'is-invalid': displayMessage.area}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.area}}
+                            </span>
                     </div>
                 </div>
                 <div class="col">
                      <!-- City -->
                     <div class="control-wrapper">
-                        <!-- <label class="" for="cityId">City</label> -->
                         <input class="form-control"
                             id="cityId"
                             type="text"
                             placeholder="City"
-                            formControlName="city" />
+                            formControlName="city"
+                            [ngClass]= "{'is-invalid': displayMessage.city}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.city}}
+                            </span>
                     </div>
                 </div>
             </div>
@@ -65,18 +77,20 @@
                 <div class="col">
                     <!-- State -->
                     <div class="control-wrapper">
-                        <!-- <label class="" for="stateId">State</label> -->
                         <input class="form-control"
                             id="stateId"
                             type="text"
                             placeholder="State"
-                            formControlName="state" />
+                            formControlName="state"
+                            [ngClass]= "{'is-invalid': displayMessage.state}" />
+                            <span class="invalid-feedback">
+                                {{displayMessage.state}}
+                            </span>
                     </div>
                 </div>
                 <div class="col">
                     <!-- Pincode -->
                     <div class="control-wrapper">
-                        <!-- <label class="" for="pincodeId">Pincode</label> -->
                         <input class="form-control"
                             id="pincodeId"
                             type="text"
@@ -97,6 +111,5 @@
         <div class="control-wrapper" id="final-row">
             <button id="register-button" type="submit" [disabled]="!additionalInfoForm.valid">Register</button>
         </div>
-    
     </div>
 </form>

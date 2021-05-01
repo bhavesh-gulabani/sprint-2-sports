@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { Customer } from './customer/customer';
 import { AuthService } from './service/auth.service';
 import { CustomerService } from './service/customer.service';
@@ -18,16 +17,17 @@ export class AppComponent implements OnInit {
   customerLoggedIn: Customer;
   userRole: string;
 
+  filterText: string;
+
   constructor(private authService: AuthService,
      private customerService: CustomerService,
-      private router: Router,
-      private route: ActivatedRoute) { 
-
-      this.route.queryParams.subscribe(params => {
-          this.userRole = params['role'];
-      });
-
-      
+      private router: Router) { 
+        
+      if (window.location.href.includes('admin')) {
+        this.userRole = 'admin';
+      } else  {
+        this.userRole = 'customer';
+      }
 
   }
 
@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
   }
 
   getLoggedInCustomer(): void {
-
     if (this.isLoggedIn) {
       // Get user email
       let email = sessionStorage.getItem('email');
@@ -68,30 +67,16 @@ export class AppComponent implements OnInit {
     this.isLoggedIn = false;
     this.toggleOptions();
     
-    // Display alert message
-    // alert('Successfully logged out');
-     
-     Swal.fire({
-      title: 'See you', 
-      text: 'Successfully logged out', 
-      icon: 'success',
-      width: '25rem'
-    });
+    if (window.location.href.includes('admin')) {
+      this.router.navigate(['/admin/login']);
+    } else  {
+      this.router.navigate(['/welcome']);
+    }
+  }
 
-    // Check for role and navigate accordingly
-    this.route.queryParams.subscribe(params => {
-      if(params['role'] === 'admin') {
-        // Navigate to admin home page
-        this.router.navigate(['/admin/login'], 
-        {
-          queryParams: { role: 'admin'}
-        });      
-      } else {
-        // Navigate to customer home page
-        this.router.navigate(['/welcome']);                    
-      }
-      
-    });
+  sendFilterText() {
+    console.log(this.filterText)
+    this.router.navigate(['/products'], {state: {data: this.filterText}});
   }
 
   initializeCustomer(): void {

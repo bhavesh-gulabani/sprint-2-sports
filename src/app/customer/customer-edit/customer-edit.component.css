@@ -58,11 +58,13 @@ button {
     color: #FFFFFF;
     font-family: Roboto;
     margin: 0.5em;
+    margin-left: 0.8em;
+    margin-top: 0.8em;
 }
 
-button:hover {
-    background: #2ec4ff;
-    border-color: #2ec4ff;
+button:disabled {
+    border-color: #85e8ff;
+    background: #85e8ff;	
 }
 
 #continue-button {
@@ -82,4 +84,9 @@ button:hover {
     border-color: #5cdefc;
     background: #5cdefc
 
+}
+
+
+.col-right span {
+    margin-left: 15em;
 }

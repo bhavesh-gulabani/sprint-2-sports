@@ -4,7 +4,7 @@ export interface Card {
     id: number;
     name: number;
     number: number;
-    expiry: Date;
+    expiry: string;
     cvv: string;
 }
 

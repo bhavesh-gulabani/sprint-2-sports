@@ -7,7 +7,6 @@ import { Order } from 'src/app/order/Order';
 import { CustomerService } from 'src/app/service/customer.service';
 import { GenericValidator } from 'src/app/shared/generic-validator';
 import { NumberValidators } from 'src/app/shared/number.validator';
-import Swal from 'sweetalert2';
 import { Customer } from '../../customer';
 
 
@@ -33,20 +32,36 @@ export class AdditionalInfoComponent implements OnInit {
   ngOnInit() {
     this.additionalInfoForm = this.fb.group({
       dateOfBirth: [''],
-      street: [''],
-      doorNo: [''],
-      area: [''],
-      city: [''],
-      state: [''],
-      pincode: ['', NumberValidators.pincode()],
+      street: ['', Validators.required],
+      doorNo: ['', Validators.required],
+      area: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      pincode: ['', [Validators.required, NumberValidators.correctNumber()]],
     });
 
     this.initializeCustomer();
 
     // Defines all of the validation messages for the form.
     this.validationMessages = {
+      street: {
+        required: `Please enter the street.`
+      },
+      doorNo: {
+        required: `Please enter the door number.`
+      },
+      area: {
+        required: `Please enter the area.`
+      },
+      city: {
+        required: `Please enter the city.`
+      },
+      state: {
+        required: `Please enter the state.`
+      },
       pincode: {
-        pincode: `The pincode must a valid number.`
+        correctNumber: `The pincode must a valid number.`,
+        required: `Please enter the pincode.`
       }
     }
 
@@ -67,25 +82,15 @@ export class AdditionalInfoComponent implements OnInit {
     // Initially customer status is valid
     this.customer.status = 'Valid';
     
-    // Hardcoding the default image url for now
+    // Hardcoding the default image url
     this.customer.imageUrl = '../../../../assets/images/person-placeholder.png';
 
-    console.log(this.customer)
   }
 
   save() {
     this.populateCustomer();
     this.customerService.addCustomer(this.customer).subscribe({
-      next: customer => {
-        console.log(customer);
-        // alert('Account successfully created');
-        Swal.fire({
-          title: 'Welcome', 
-          text: 'Account successfully created', 
-          icon: 'success',
-          width: '25rem'
-          });
-      },
+      next: customer => { },
       error: err => this.errorMessage = err
     });
 

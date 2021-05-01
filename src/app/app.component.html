@@ -7,8 +7,8 @@
       </div>
       <div class="col-7">
           <div class="wrapper">
-              <input type="text" id="search-bar">
-              <button id="search-button"><i class="fa fa-search" id="search-icon" aria-hidden="true"></i>    </button>
+              <input type="text" id="search-bar" [(ngModel)]="filterText">
+              <button id="search-button" (click)="sendFilterText()" ><i class="fa fa-search" id="search-icon" aria-hidden="true"></i></button>
           </div>
       </div>
       
@@ -57,7 +57,7 @@
 <header *ngIf="userRole === 'admin'">
     <div class="row" id="top-nav">
         <div class="col-2" id="title">
-            <a>Sports Center</a>
+            <a [routerLink]="['/admin', 'dashboard']">Sports Center</a>
         </div>
         <div class="col-8">
             <div class="wrapper">
@@ -66,7 +66,7 @@
         </div>
   
         <div class="col-2" *ngIf="!isLoggedIn">
-          <button id="login-button" [routerLink]="['/admin', 'login']" [queryParams] = "{'role':'admin'}">Login</button>
+          <button id="login-button" [routerLink]="['/admin', 'login']">Login</button>
         </div>
   
       <div class="col-2" *ngIf="isLoggedIn" (click)="toggleOptions()" >
@@ -75,7 +75,7 @@
   
          <!-- Hover options -->
       <div class="container hover-container hide">
-          <div class="row hover-row"><a (click)="toggleOptions()" class="hover-option">Your account</a></div>
+          <!-- <div class="row hover-row"><a (click)="toggleOptions()" class="hover-option">Your account</a></div> -->
           <div class="row hover-row"><a (click)="logout()" class="hover-option">Logout</a></div>
       </div>
   

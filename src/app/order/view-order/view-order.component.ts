@@ -34,11 +34,9 @@ export class ViewOrderComponent implements OnInit {
   }
   
   getCustomer(): void {
-    // Get user email
     let email = sessionStorage.getItem('email');
 
-    // Get user details from email
-      this.customerService.getCustomerByEmail(email).subscribe({
+    this.customerService.getCustomerByEmail(email).subscribe({
       next: customer => this.customer = customer,
       error: err => this.errorMessage = err
     });
@@ -46,14 +44,14 @@ export class ViewOrderComponent implements OnInit {
 
   getOrder(id: number): void {
     this.orderService.getOrder(id).subscribe({
-      next: order => {this.order = order; console.log(this.order)},
+      next: order => {this.order = order;},
       error: err => this.errorMessage = err
     });
   }
 
   confirmOrder() {
     this.orderService.confirmOrder(this.order.id).subscribe({
-      next: order => {this.order = order; console.log(this.order); this.router.navigate(['/payments', 'add'], {state: {data: this.order}})},
+      next: order => {this.order = order; this.router.navigate(['/payments', 'add'], {state: {data: this.order}})},
       error: err => this.errorMessage = err
     });
   }
@@ -63,7 +61,6 @@ export class ViewOrderComponent implements OnInit {
       id: 0,
       amount: 0,
       billingDate: null,
-      customer: null,
       payment: null,
       cart: null
     }

@@ -15,9 +15,21 @@ export class CartService {
         
         return this.http.get<Cart>(`${this.baseUrl}/${id}/cart`)
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
+    }
+
+    updateCart(cart: Cart) {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      console.log('In service...', cart)     
+      return this.http.put<Cart>(`${this.baseUrl}/cart`, cart,  { headers })
+      .pipe(
+        // tap(data => console.log(JSON.stringify(data))),
+        map(() => cart),
+        catchError(this.handleError)
+    );
+
     }
 
     private handleError(err) {

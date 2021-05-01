@@ -23,14 +23,25 @@
                             <p>Date of birth: {{ customer.dateOfBirth }}</p>
                         </div>
                         <div class="row">
-                            <p>Status: <span style="color:#00d600">{{ customer.status }}</span></p>
-                            <!-- <input type="radio" name="customer-status" value="Valid" [checked]=" customer.status === 'Valid' "> 
-                            <label for="Valid">Valid</label>
-                            <input type="radio" name="customer-status" value="Invalid" [checked]=" customer.status === 'Invalid' ">
-                            <label for="Invalid">Invalid</label> -->
+                            <p>Status:</p>
+                            
+                            <form (ngSubmit)="save()" [formGroup]="customerForm">
+                                <div class="form-group row mb-2">
+                                    <!-- Status -->
+                                    <div class="control-wrapper">
+                                       
+                                        <div class="radio-wrapper">
+                                            <input type="radio" formControlName="status" value="Valid" [checked]="customer.status === 'Valid'"> Valid
+                                            <input type="radio" formControlName="status" value="Invalid" [checked]="customer.status === 'Invalid'"> Invalid
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <div class="row back">
-                            <button [routerLink]="['/admin', 'customers']" [queryParams]="{ role:'admin' }">Back</button>
+                            <button [routerLink]="['/admin', 'customers']">Back</button>
+                            <button (click)="save()" id="save-button">Save</button>
+
                         </div>
                     </div>
                     <div class="col-5">

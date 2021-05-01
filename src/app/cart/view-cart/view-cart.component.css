@@ -50,6 +50,7 @@
 .product-img {
     width: 12em;
     margin: 1em;
+    cursor: pointer;
 }
 
 button {
@@ -70,4 +71,19 @@ button {
 button:hover {
     background: #2ec4ff;
     border-color: #2ec4ff;
+}
+
+button:disabled {
+    border-color: #85e8ff;
+    background: #85e8ff;	
+
+}
+
+#delete-button {
+    width: 5em;
+    height: 2em;
+    font-size: 1em;
+    background-color: red;
+    border-color: red;
+
 }

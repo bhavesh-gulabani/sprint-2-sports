@@ -16,7 +16,7 @@ export class OrderService {
         
         return this.http.get<Order[]>(this.baseUrl)
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -25,7 +25,7 @@ export class OrderService {
         
         return this.http.get<Order>(`${this.baseUrl}/${id}`)
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -35,7 +35,7 @@ export class OrderService {
         // order.id = null;
         return this.http.post<Order>(`${this.baseUrl}/customer/${customerId}`, order, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -43,7 +43,7 @@ export class OrderService {
     confirmOrder(id: number) {
       return this.http.post<Order>(`${this.baseUrl}/${id}/confirm`, {})
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -51,7 +51,7 @@ export class OrderService {
     completeOrder(orderId: number, customerId: number, paymentId: number) {
       return this.http.put<Order>(`${this.baseUrl}/${orderId}/customer/${customerId}/payment/${paymentId}/complete`, {})
       .pipe(
-        tap(data => console.log(JSON.stringify(data))),
+        // tap(data => console.log(JSON.stringify(data))),
         catchError(this.handleError)
     );
     }

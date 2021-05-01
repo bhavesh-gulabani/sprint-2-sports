@@ -12,6 +12,7 @@ import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
 import { OrderModule } from './order/order.module';
 import { PaymentModule } from './payment/payment.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PaymentModule } from './payment/payment.module';
     ProductModule,
     OrderModule,
     PaymentModule,
+    SharedModule,
     AppRoutingModule,
     HttpClientModule,
   ],

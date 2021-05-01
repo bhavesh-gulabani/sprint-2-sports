@@ -12,8 +12,9 @@ import { CustomerService } from '../../../service/customer.service';
 export class CustomerDetailComponent implements OnInit {
   errorMessage: string;
   customer: Customer;
+  customerForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private customerService: CustomerService) { }
+  constructor(private route: ActivatedRoute, private customerService: CustomerService, private fb: FormBuilder) { }
 
   ngOnInit() {
     const param = this.route.snapshot.paramMap.get('id');
@@ -22,7 +23,9 @@ export class CustomerDetailComponent implements OnInit {
       this.getCustomer(id);
     }
 
-    this.checkStatus();
+    this.customerForm = this.fb.group({
+      status: ['']
+    })
   }
 
   getCustomer(id: number): void {
@@ -32,13 +35,15 @@ export class CustomerDetailComponent implements OnInit {
     });
   }
 
-  checkStatus() {
-        
-    
-    
-
+  save() {
+    // Set status
+    this.customer.status = this.customerForm.get('status').value;
+    this.customer.orders = null;
+    this.customerService.updateCustomer(this.customer).subscribe({
+      next: customer => this.customer = customer,
+      error: err => this.errorMessage = err 
+    })
   }
-
 
 
 }

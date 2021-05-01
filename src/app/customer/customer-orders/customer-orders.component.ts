@@ -23,7 +23,7 @@ export class CustomerOrdersComponent implements OnInit {
     }
 
     this.customerService.getOrders(this.customerId).subscribe({
-      next: orders => {this.orders = orders; console.log(this.orders)},
+      next: orders => {this.orders = orders;},
       error: err => this.errorMessage = err
     });
   }

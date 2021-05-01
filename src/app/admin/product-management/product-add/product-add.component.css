@@ -1,0 +1,44 @@
+.control-wrapper {
+    display: block;
+    width: 50%;
+    margin-bottom: 1.5em;
+}
+
+label {
+    margin-left: 1.5em;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+input[type="text"],[type="number"],[type="Date"] {
+    width: 50%;
+    margin-left: 1.5em;
+}
+
+select{
+    width: 50%;
+    margin-left: 1.5em;
+}
+
+#final-row {
+    box-align: center;
+    text-align: center;
+}
+
+#continue-button {
+    width: 8em;
+    height: 4em;
+    border-color: #7f00b1;
+    background: #7f00b1;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #FFFFFF;
+    font-family: Roboto;
+    align-self: center;
+}
+
+span{
+    width: 50%;
+    margin-left: 1.5em;
+}

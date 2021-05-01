@@ -3,15 +3,15 @@
   <div class="card">
     <div class="row">
       <!-- Product image -->
-      <div class="col-4">
+      <div class="col-5">
         <img [src]='product.imageUrl' class="prod-img">
       </div>
       <!-- Product Name, quantity, add to cart button -->
-      <div class="col-8">
+      <div class="col-7">
         <div class="row"><p id="prod-name">{{ product.name }}</p></div>
         <div class="row mid"><p>Price : {{ product.priceAfterDiscount | currency:'INR' }}</p></div>
         <div class="row qty mid">Quantity : <span>  </span> <input type="number" [(ngModel)]="quantity" min="1" [max]= "product.stock" ></div>
-        <div class="row mid"><button (click)="addToCart()">Add to cart</button></div> 
+        <div class="row mid"><button (click)="addToCart(); addConfirmation()">Add to cart</button></div> 
       </div>
     </div>
     <hr>
@@ -22,84 +22,10 @@
       <div class="row bottom"><p><b>Category:</b> {{ product.category }}</p></div>
       <div class="row bottom"><p><b>Color:</b> {{ product.color }}</p></div>
       <div class="row bottom"><p><b>MRP:</b> {{ product.mrp | currency:'INR' }}</p></div>
-      <div class="row bottom"><p><b>Discount:</b> {{ product.discount }} %</p></div>
+      <div class="row bottom"><p><b>Discount:</b> {{ product.discount }}%</p></div>
       <div class="row bottom"><p><b>Size:</b> {{ product.size }}</p></div>
       <div class="row bottom"><p><b>Stock:</b> {{ product.stock }}</p></div>
 
     </div>
   </div>
 </div>
-
- <!-- <div class='card'>
-    <div class='card-header'>
-      {{pageTitle + ': ' + product?.productName}}
-    </div>
-   
-    <div class='card-body'
-         *ngIf='product'>
-      <div class='row'>
-        <div class='col-md-8'>
-          <div class='row'>
-            <div class='col-md-4'>Name:</div>
-            <div class='col-md-8'>{{product.name}}</div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Category:</div>
-            <div class='col-md-8'>{{product.category}}</div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Description:</div>
-            <div class='col-md-8'>{{product.description}}</div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Brand:</div>
-            <div class='col-md-8'>{{product.brand}}</div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Colour:</div>
-            <div class='col-md-8'>{{product.color}}
-          </div>
-         
-          <div class='row'>
-            <div class='col-md-4'>Size:</div>
-            <div class='col-md-8'>{{product.size}}			
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>MRP:</div>
-            <div class='col-md-8'>{{product.price|currency:'USD':'symbol'}}			
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Discount:</div>
-            <div class='col-md-8'>{{product.discount}}
-            </div>
-          <div class='row'>
-            <div class='col-md-4'>Price After Discount:</div>
-            <div class='col-md-8'>{{product.priceAfterDiscount|currency:'USD':'symbol'}}
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Stock:</div>
-            <div class='col-md-8'>{{product.stock}}			
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Delivery By:</div>
-            <div class='col-md-8'>{{product.estimatedDelivery}}			
-          </div>
-  
-        <div class='col-md-4'>
-          <img class='center-block img-responsive'
-               [style.width.px]='200'
-               [style.margin.px]='2'
-               [src]='product.imageUrl'
-               [title]='product.productName'>
-        </div>
-      </div>
-    </div>
-  
-    <div class='card-footer'>
-      <button class='btn btn-outline-secondary'
-              style='width:80px'
-              (click)='onBack()'>
-        <i class='fa fa-chevron-left'></i> Back
-      </button>
-    </div>
-  </div> -->

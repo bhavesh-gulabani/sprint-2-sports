@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col card left" [routerLink]="['/admin', 'customers']" [queryParams]="{ role:'admin' }">
+        <div class="col card left" [routerLink]="['/admin', 'customers']">
             <p>Customer Management</p>
         </div>
-        <div class="col card right">
+        <div class="col card right" [routerLink]="['/admin', 'products']">
             <a><p>Product Management</p></a>
         </div>
     </div>

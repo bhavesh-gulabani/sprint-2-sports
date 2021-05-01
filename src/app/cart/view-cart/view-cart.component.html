@@ -5,12 +5,13 @@
     <div class="card">
         <div class="row inside" *ngFor="let key of cartItems.keys()">
             <div class="col left">
-                <img [src]="key.imageUrl" class="product-img">
+                <img [src]="key.imageUrl" class="product-img" [routerLink]="['/products', key.id]">
             </div>
 
             <div class="col right">
                 <div class="row"><p>{{ key.name }}</p></div>
                 <div class="row"><p>Quantity : {{ cartItems.get(key) }}</p></div>
+                <div class="row"><button (click)="removeItem(key)" id="delete-button">Remove</button></div>
             </div>
             
             <div class="col right">
@@ -21,10 +22,11 @@
             <p>Total : {{ cart.totalAmount | currency:'INR' }}</p>
         </div>
         <div class="row final">
-            <button (click)="placeOrder()">Proceed to buy</button>
+            <button (click)="placeOrder()" [disabled]="cart.totalAmount === 0">Proceed to buy</button>
         </div>    
     </div>
     
 </div>
+
 
 

@@ -10,18 +10,13 @@
                     <div class="control-wrapper">
                         <label class="" for="nameId">Name</label>
                         <input class="form-control"
-                                id="nameId"
-                                type="text"
-                                placeholder="Name (required)"
-                                formControlName="name"
-                                [ngClass]="{'is-invalid': (customerEditForm.get('name').touched || customerEditForm.get('name').dirty) && !customerEditForm.get('name').valid }" />
+                            id="nameId"
+                            type="text"
+                            placeholder="Name (required)"
+                            formControlName="name"
+                            [ngClass]="{'is-invalid': displayMessage.name}" />
                         <span class="invalid-feedback">
-                            <span *ngIf="customerEditForm.get('name').errors?.required">
-                            Please enter your name.
-                            </span>
-                            <span *ngIf="customerEditForm.get('name').errors?.minlength">
-                            The name must be longer than 3 characters.
-                            </span>
+                            {{ displayMessage.name }}
                         </span>
                     </div>
             
@@ -33,14 +28,10 @@
                                 type="email"
                                 placeholder="Email (required)"
                                 formControlName="email"
-                                [ngClass]="{'is-invalid': (customerEditForm.get('email').touched || customerEditForm.get('email').dirty) && !customerEditForm.get('email').valid }" />
+                                disabled
+                                [ngClass]="{'is-invalid': displayMessage.email}" />
                         <span class="invalid-feedback">
-                            <span *ngIf="customerEditForm.get('email').errors?.required">
-                            Please enter your email.
-                            </span>
-                            <span *ngIf="customerEditForm.get('email').errors?.email">
-                            Please enter a valid email address.
-                            </span>
+                            {{ displayMessage.email }}
                         </span>
                     </div>
 
@@ -53,13 +44,9 @@
                                 type="password"
                                 placeholder="Password (required)"
                                 formControlName="password"
-                                [ngClass]="{'is-invalid': (customerEditForm.get('password').touched || customerEditForm.get('password').dirty) && !customerEditForm.get('password').valid }" />
-                        <!-- <i class="fa fa-eye" id="togglePassword"></i> -->
-                    
+                                [ngClass]="{'is-invalid': displayMessage.password}" />
                         <span class="invalid-feedback">
-                            <span *ngIf="customerEditForm.get('password').errors?.required">
-                            Please enter your password.
-                            </span>
+                            {{ displayMessage.password }}
                         </span>
                     </div>
 
@@ -70,7 +57,11 @@
                                 id="mobileId"
                                 type="text"
                                 placeholder="Mobile number (optional)"
-                                formControlName="contactNo" />
+                                formControlName="contactNo"
+                                [ngClass]="{'is-invalid': displayMessage.contactNo}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.contactNo }}
+                        </span>
                     </div>
 
                     <!-- Date of Birth -->
@@ -86,7 +77,7 @@
                 </div>
 
                 <!-- Address block -->
-                <div class="col" >
+                <div class="col col-right" >
                     <div class="card">  
                         <div class="control-wrapper">
                             <label class="" for="addressId">Address</label>        
@@ -98,7 +89,12 @@
                                 id="streetId"
                                 type="text"
                                 placeholder="Street"
-                                formControlName="street" />
+                                formControlName="street" 
+                                [ngClass]="{'is-invalid': displayMessage.street}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.street }}
+                        </span>
+                                
                         </div>
                         
                         <!-- Door number -->
@@ -108,7 +104,11 @@
                                 id="doorNoId"
                                 type="text"
                                 placeholder="Door number"
-                                formControlName="doorNo" />
+                                formControlName="doorNo"
+                                [ngClass]="{'is-invalid': displayMessage.doorNo}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.doorNo }}
+                        </span>
                         </div>
                 
                         <!-- Area -->
@@ -118,7 +118,11 @@
                                 id="areaId"
                                 type="text"
                                 placeholder="Area"
-                                formControlName="area" />
+                                formControlName="area"
+                                [ngClass]="{'is-invalid': displayMessage.area}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.area }}
+                        </span>
                         </div>
             
                         <!-- City -->
@@ -128,7 +132,11 @@
                                 id="cityId"
                                 type="text"
                                 placeholder="City"
-                                formControlName="city" />
+                                formControlName="city"
+                                [ngClass]="{'is-invalid': displayMessage.city}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.city }}
+                        </span>
                         </div>
                     
                         <!-- State -->
@@ -138,7 +146,11 @@
                                 id="stateId"
                                 type="text"
                                 placeholder="State"
-                                formControlName="state" />
+                                formControlName="state"
+                                [ngClass]="{'is-invalid': displayMessage.state}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.state }}
+                        </span>
                         </div>
                                         
                         <!-- Pincode -->
@@ -148,7 +160,11 @@
                                 id="pincodeId"
                                 type="text"
                                 placeholder="Pincode"
-                                formControlName="pincode" />
+                                formControlName="pincode"
+                                [ngClass]="{'is-invalid': displayMessage.pincode}" />
+                        <span class="invalid-feedback">
+                            {{ displayMessage.pincode }}
+                        </span>
                         </div>            
                     </div>
                 </div>

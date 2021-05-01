@@ -27,16 +27,7 @@
 </div>
 
 <br>
-
-<!-- <div>
-  <marquee class="marquee" direction="left" scrollamount="15">
-   <h3>HURRY UP! &nbsp; &nbsp;  SALE IS LIVE NOW</h3> 
-  </marquee>
-</div> -->
-
-<br>
-<br>
-  <div class="sale-banner">
+  <div class="sale-banner" [routerLink]="['/products']">
     <img src="../../assets/images/clearance_h1.jpg" class="d-block w-100" alt="...">
   </div>
 
@@ -45,7 +36,7 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="thumbnail">
-          <a href="" target="_blank">
+          <a [routerLink]="['/products', 'categories', 'Cricket']">
             <img src="../../assets/images/crick.jpg" alt="Lights" style="width:100%" >
             <div class="caption">
               <p style="text-align: center; color: black;">UPTO 50% OFF</p>
@@ -56,7 +47,7 @@
       </div>
       <div class="col-sm-4">
         <div class="thumbnail">
-          <a href="/w3images/nature.jpg" target="_blank">
+          <a [routerLink]="['/products', 'categories', 'Tennis']">
             <img src="../../assets/images/tenn.jpg" alt="Nature" style="width:100%">
             <div class="caption">
               <p style="text-align: center; color: black;">UPTO 30% OFF</p>
@@ -67,7 +58,7 @@
       </div>
       <div class="col-sm-4">
         <div class="thumbnail">
-          <a href="/w3images/fjords.jpg" target="_blank">
+          <a [routerLink]="['/products', 'categories', 'Football']">
             <img src="../../assets/images/foot.jpg" alt="Fjords" style="width:100%">
             <div class="caption">
               <p style="text-align: center; color: black;">UPTO 60% OFF</p>
@@ -80,7 +71,7 @@
   </div>
 
   
-  <div class="sale-banner">
+  <div class="sale-banner" [routerLink]="['/products', 'categories', 'Badminton']" style="cursor:pointer;">
     <img src="../../assets/images/bad banner.jpg" class="d-block w-100" alt="...">
   </div>
 

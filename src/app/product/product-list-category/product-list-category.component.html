@@ -5,7 +5,8 @@
       <h2>{{ product.name }}</h2>
       <p class="price">{{ product.priceAfterDiscount | currency:'INR' }}</p>
       <p class="description">{{ product.description }}</p>
-      <button (click)="addToCart(product)">Add to Cart</button>
-    </div>
+        <button (click)="addToCart(product); this.addConfirmation();">Add to Cart</button>
+    
   </div>
+</div>
 </div>

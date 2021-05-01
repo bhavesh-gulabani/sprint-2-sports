@@ -1,0 +1,34 @@
+<div class="row">
+    <p id="page-title">Order Details</p>
+</div>
+
+<div class=container>
+    <div class="row-container">
+        <div class="row">
+            <div class="card">
+                <div class="row"><p><b>Order ID : </b> {{ order.id }}</p></div>
+                <div class="row"><p><b>Billing date : </b> {{ order.billingDate }}</p></div>
+                <div class="row"><p><b>Total amount : </b> {{ order.amount | currency:'INR' }}</p></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card">
+                <div class="row cart-start">
+                    <p id="cart-title">Cart items</p>
+                </div>
+                <div class="row inside" *ngFor="let key of cartItems.keys()">
+                    <div class="col left">
+                        <img [src]="key.imageUrl" class="product-img" [routerLink]="['/products', key.id]">
+                    </div>
+
+                    <div class="col right">
+                        <div class="row"><p><b>Product name : </b>{{ key.name }}</p></div>
+                        <div class="row"><p><b>Quantity bought : </b> {{ cartItems.get(key) }}</p></div>            
+                        <div class="row"><p><b>Price : </b>{{ key.priceAfterDiscount| currency:'INR' }}</p></div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

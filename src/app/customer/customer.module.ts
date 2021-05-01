@@ -8,6 +8,7 @@ import { AdditionalInfoComponent } from './customer-register/additional-info/add
 import { BasicInfoComponent } from './customer-register/basic-info/basic-info.component';
 import { CustomerRegisterComponent } from './customer-register/customer-register.component';
 import { CustomerRoutingModule } from './customer-routing.module';
+import { CustomerOrderComponent } from './customer-order/customer-order.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CustomerRoutingModule } from './customer-routing.module';
     AdditionalInfoComponent,
     CustomerProfileComponent,
     CustomerEditComponent,
-    CustomerOrdersComponent
+    CustomerOrdersComponent,
+    CustomerOrderComponent
   ],
   imports: [
     SharedModule,

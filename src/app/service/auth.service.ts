@@ -11,10 +11,6 @@ import { catchError, tap, map } from 'rxjs/operators';
 export class AuthService {
   @Output() getLoggedInStatus: EventEmitter<any> = new EventEmitter();
 
-  // ngOnInit() {
-  //   this.getLoggedInStatus.emit(this.isLoggedIn());
-  // }
-
   private baseUrl = 'http://localhost:9898/sports/users/authenticate';
   constructor(private http: HttpClient) { }
 
@@ -29,20 +25,16 @@ export class AuthService {
                     return data;
                 }
             ),
-            tap(data => {console.log('Token: ' + JSON.stringify(data));}),
             catchError(this.handleError)
         );
   }
 
   isLoggedIn() {
-    
     let user = sessionStorage.getItem('email');
-    console.log(!(user === null));
     return !(user === null);
   }
 
   logout(): void {
-    console.log('Logged out');
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('token');
   }

@@ -6,7 +6,6 @@ export interface Order {
     id: number;
     amount: number;
     billingDate: Date;
-    customer: Customer;
     payment: Payment;
     cart: Cart;
 }

@@ -8,23 +8,10 @@
                 <div class="col"><p>TOTAL</p></div>
             </div>
             <div class="row">
-                <div class="col"><p><a href="">{{ order.id }}</a></p></div>
+                <div class="col"><p><a [routerLink]="['/customers', customerId, 'orders', order.id]">{{ order.id }}</a></p></div>
                 <div class="col"><p>{{ order.billingDate }}</p></div>
                 <div class="col"><p>{{ order.amount | currency: 'INR' }}</p></div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- <table>
-    <tr>
-        <th>ORDER ID</th>
-        <th>PLACED ON</th>
-        <th>TOTAL</th>
-    </tr>
-    <tr>
-        <td>{{ order.id }}</td>
-        <td>{{ order.billingDate }}</td>
-        <td>{{ order.amount }}</td>
-    </tr>
-</table> -->

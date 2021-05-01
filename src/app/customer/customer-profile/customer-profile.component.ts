@@ -19,7 +19,6 @@ export class CustomerProfileComponent implements OnInit {
     const param = this.route.snapshot.paramMap.get('id');
     if (param) {
       const id = +param;
-      // console.log('In profile... Before getting');
       this.getCustomer(id);
     }
   }

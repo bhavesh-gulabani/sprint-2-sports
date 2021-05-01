@@ -4,6 +4,7 @@ import { Cart } from 'src/app/cart/cart';
 import { Customer } from 'src/app/customer/customer';
 import { CustomerService } from 'src/app/service/customer.service';
 import { ProductService } from 'src/app/service/product-service';
+import Swal from 'sweetalert2';
 import { Product } from '../product';
 
 @Component({
@@ -15,6 +16,7 @@ export class ProductListComponent implements OnInit {
   
   products: Product[];
   errorMessage: string;
+  searchText: string;
 
   customerLoggedIn: Customer;
   cart: Cart;
@@ -23,14 +25,26 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService, private customerService: CustomerService, private router: Router) { }
 
   ngOnInit() { 
+    this.searchText = history.state.data
 
-    this.productService.getProducts().subscribe({
-      next: products => {this.products = products; console.log(this.products)},
-      error: err => this.errorMessage = err
-    });
+    // Get all products
+    this.getProducts()
 
     // Get logged in customer 
     this.getCustomer();
+  }
+
+  getProducts() {
+    this.productService.getProducts().subscribe({
+      next: products => {
+        this.products = products
+        // If search text provided, filter the products
+        if (this.searchText) {
+          this.products = this.products.filter(product => product.name.includes(this.searchText) || product.description.includes(this.searchText) || product.category.includes(this.searchText));
+        }
+      },
+      error: err => this.errorMessage = err
+    });
   }
 
 
@@ -47,6 +61,11 @@ export class ProductListComponent implements OnInit {
   // Method to add items to the customer cart
   addToCart(product: Product) {
 
+    // If customer is not logged in, navigate to login page
+    if (!this.customerLoggedIn) {
+      this.router.navigate(['/customers', 'login']);
+    }
+
     // Get the currrent cart of the customer
     this.cart = this.customerLoggedIn.cart;
 
@@ -60,10 +79,8 @@ export class ProductListComponent implements OnInit {
 
       // Populate the Map<Product, Integer> with items already in the customer's cart
       Object.keys(this.cart.items).forEach(key => {
-        let productId = Number(key.substring(12, 15));
-        if (isNaN(productId)) {
-          productId = Number(key.substring(19, 22));
-        }
+        // let productId = isNaN(Number(key.substring(12, 15))) ? Number(key.substring(19, 22)) : Number(key.substring(12, 15));
+        let productId = Number(key.substring(19, 22));
         let productFound: Product = this.findProductById(productId);
         this.cartItems.set(productFound, this.cart.items[key]);
       });
@@ -79,29 +96,35 @@ export class ProductListComponent implements OnInit {
       convertedCartItems[stringifiedKey] = val;
     });
 
-    console.log('1 : ',convertedCartItems)
-
     // Set the items attribute of the cart
     this.cart.items = convertedCartItems;
-
-    console.log('2 : ',this.cart)
 
     // Set the customer cart 
     this.customerLoggedIn.cart = this.cart;
 
-    console.log('3 : ',this.customerLoggedIn.cart)
-
+    // Set orders to null to avoid cyclic reference
+    if (this.customerLoggedIn.orders)
+      this.customerLoggedIn.orders = null;
 
     // Send PUT request to update customer details in the database
     this.updateCustomer();
   }
 
-  getCustomer(): Customer {
-    // Get user email
-    let email = sessionStorage.getItem('email');
+  addConfirmation(){
+    Swal.fire({
+      title: 'Success', 
+      text: 'Product successfully added', 
+      icon: 'success',
+      showConfirmButton:false,
+      width: '25rem'
+    });
+    setTimeout(() => window.location.reload(), 1000);
+  }    
+  
 
-    // Get user details from email
-     this.customerService.getCustomerByEmail(email).subscribe({
+  getCustomer(): Customer {
+    let email = sessionStorage.getItem('email');
+    this.customerService.getCustomerByEmail(email).subscribe({
       next: customer => {this.customerLoggedIn = customer; return this.customerLoggedIn;},
       error: err => this.errorMessage = err
     });

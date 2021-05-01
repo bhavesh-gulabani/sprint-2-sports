@@ -50,3 +50,12 @@ button:hover {
     background: #2ec4ff;
     border-color: #2ec4ff;
 }
+
+
+.control-wrapper {
+    margin-left: 1.5em
+}
+
+#save-button {
+    margin-left: 1em;
+}

@@ -14,7 +14,7 @@ export class PaymentService {
     getPayments(): Observable<Payment[]> {
         return this.http.get<Payment[]>(this.baseUrl)
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -22,7 +22,7 @@ export class PaymentService {
     getPayment(id: number): Observable<Payment> {
         return this.http.get<Payment>(`${this.baseUrl}/${id}`)
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -31,7 +31,7 @@ export class PaymentService {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post<Payment>(this.baseUrl, payment, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -40,7 +40,7 @@ export class PaymentService {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.put<Payment>(this.baseUrl, payment, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             map(() => payment),
             catchError(this.handleError)
         );

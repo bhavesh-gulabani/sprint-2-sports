@@ -17,7 +17,7 @@ export class CustomerService {
 
         return this.http.get<Customer[]>(url)
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -26,7 +26,7 @@ export class CustomerService {
         let url = 'http://localhost:9898/sports/admin/customers/' + id;
         return this.http.get<Customer>(url)
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -35,7 +35,7 @@ export class CustomerService {
       let url = `${this.baseUrl}/${email}`;
       return this.http.get<Customer>(url)
         .pipe(
-          tap(data => console.log(JSON.stringify(data))),
+          // tap(data => console.log(JSON.stringify(data))),
           catchError(this.handleError)
       );
     }
@@ -45,7 +45,7 @@ export class CustomerService {
         customer.id = null;
         return this.http.post<Customer>(`${this.baseUrl}/register`, customer, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
         );
     }
@@ -55,7 +55,7 @@ export class CustomerService {
         const url = `${this.baseUrl}/${id}`;
         return this.http.delete<Customer>(url, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
           );
     }
@@ -64,7 +64,7 @@ export class CustomerService {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.put<Customer>(this.baseUrl, customer, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             map(() => customer),
             catchError(this.handleError)
         );
@@ -75,7 +75,7 @@ export class CustomerService {
       const url = `${this.baseUrl}/${id}/orders`;
         return this.http.get<Order[]>(url, { headers })
           .pipe(
-            tap(data => console.log(JSON.stringify(data))),
+            // tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
           );
     }
